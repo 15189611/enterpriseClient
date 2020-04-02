@@ -6,11 +6,16 @@
 
 <script>
 export default {
-  name: ' 关于我们',
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App'
+      
     }
+  },
+  methods:{
+
+  },
+  mounted:{
+    
   }
 }
 </script>

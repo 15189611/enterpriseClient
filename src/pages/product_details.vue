@@ -1,6 +1,6 @@
 <template>
   <div class="hello">
-    最新动向
+    产品详情1
   </div>
 </template>
 

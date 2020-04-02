@@ -1,5 +1,9 @@
 <template>
-  <div class="hello">{{currentData}}</div>
+  <div class="parent">
+    <div>首页</div>
+    
+  </div>
+
 </template>
 
 <script>
@@ -7,7 +11,6 @@ import router from '../router/index.js'
 import axios from 'axios'
 
 export default {
-  name: "首页",
   data() {
     return {
       msg: "Welcome to Your Vue.js App",
@@ -36,7 +39,7 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-.hello {
+.parent {
   color: #42b983;
 }
 </style>

@@ -27,7 +27,7 @@ export default {
 <style lang="scss" scoped>
 .Footer{
   text-align: center;
-  width: 980px;
+  width: 100%;
   margin: 0px auto;
 }
 </style>

@@ -1,7 +1,9 @@
 <template>
   <div class="parent">
-    <div>首页</div>
-    
+
+    <div class="text">首页</div>
+  
+  
   </div>
 
 </template>
@@ -32,7 +34,7 @@ export default {
     }
   },
   mounted(){
-    this.testGet();
+    //this.testGet();
   }
 };
 </script>
@@ -40,6 +42,12 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .parent {
-  color: #42b983;
+   display: flex;
+  justify-content: center;
+}
+.text{
+   color: greenyellow;
+   height:1200px;
+   text-align: center;
 }
 </style>

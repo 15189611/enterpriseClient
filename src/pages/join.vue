@@ -62,10 +62,8 @@ export default {
   height: 100%;
 }
 .upload-parent{
-  display: flex;
-  margin-top: 50px;
+  display: flex;  
   justify-content: center;
-  
 }
 .upload-demo{
   align-items: center;

@@ -1,6 +1,6 @@
 <template>
   <div class="parent">
-    <el-button slot="trigger" size="small" type="primary" @click="downFile(url)">下载模板</el-button>
+    <el-button slot="trigger" size="small" type="primary" @click="downFile(imgurl)">下载模板</el-button>
   </div>
 </template>
 
@@ -11,6 +11,7 @@ export default {
   data() {
     return {
       url : "/enterprise/attached/test.pdf",
+      imgurl : "/enterprise/attached/w69rLnAqY3.jpg",
     };
   },
   methods: {

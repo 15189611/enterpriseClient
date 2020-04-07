@@ -15,7 +15,7 @@
           class="el-menu-demo"
           mode="horizontal"
           @select="handleSelect"
-          background-color="#00000000"
+          background-color="#000000"
           text-color="#ffffff"
           active-text-color="#ffffff"
           :router="isRouter"

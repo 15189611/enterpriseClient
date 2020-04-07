@@ -80,6 +80,7 @@ export default {
 <style scoped>
 .parent {
   width: 100%;
-    text-align: center;
+  text-align: center;
+  background: white;
 }
 </style>

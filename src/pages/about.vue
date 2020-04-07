@@ -25,6 +25,7 @@ export default {
 .hello {
   color: greenyellow;
   text-align: center;
+  background: white;
   
 }
 </style>

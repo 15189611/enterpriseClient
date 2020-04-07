@@ -24,6 +24,7 @@ export default {
 <style scoped>
 .hello {
   color: greenyellow;
-    text-align: center;
+  text-align: center;
+    background: white;
 }
 </style>

@@ -1,10 +1,9 @@
 
 <template>
   <div class="parent">
-
     <div class="header">
       <div class="logo" v-if="!showLogoText">
-        <img src="../../static/images/logo.jpg"  />
+        <img src="../../static/images/logo.jpg" />
       </div>
 
       <div class="logo-text" v-if="showLogoText">最终前沿</div>
@@ -15,13 +14,18 @@
           class="el-menu-demo"
           mode="horizontal"
           @select="handleSelect"
-          background-color="#000000"
+          background-color="#00000000"
           text-color="#ffffff"
           active-text-color="#ffffff"
           :router="isRouter"
         >
           <el-menu-item index="./mHome" class="el-menu-child">首页</el-menu-item>
-          <el-submenu index="./mProduct" class="el-menu-child">
+          <el-menu-item index="./mProduct" class="el-menu-child">产品</el-menu-item>
+          <el-menu-item index="./mAbout" class="el-menu-child">关于我们</el-menu-item>
+          <el-menu-item index="./mNewsaction" class="el-menu-child">最新动向</el-menu-item>
+          <el-menu-item index="./mContact" class="el-menu-child">联系我们</el-menu-item>
+          <el-menu-item index="./mJoin" class="el-menu-child">加入我们</el-menu-item>
+          <!-- <el-submenu index="./mProduct" class="el-menu-child">
             <template slot="title">产品中心</template>
             <el-menu-item index="./mProduct">芯片中心</el-menu-item>
             <el-menu-item index="./mProductDetails">高通芯片</el-menu-item>
@@ -32,15 +36,10 @@
               <el-menu-item index="2-4-2">麒麟980</el-menu-item>
               <el-menu-item index="2-4-3">麒麟990</el-menu-item>
             </el-submenu>
-          </el-submenu>
-          <el-menu-item index="./mAbout" class="el-menu-child">关于我们</el-menu-item>
-          <el-menu-item index="./mNewsaction" class="el-menu-child">最新动向</el-menu-item>
-          <el-menu-item index="./mContact" class="el-menu-child">联系我们</el-menu-item>
-          <el-menu-item index="./mJoin" class="el-menu-child">加入我们</el-menu-item>
+          </el-submenu>-->
         </el-menu>
       </div>
     </div>
-
   </div>
 </template>
 
@@ -48,7 +47,7 @@
 export default {
   data() {
     return {
-      showLogoText : true,
+      showLogoText: true,
       activeIndex2: "./mHome",
       isRouter: true,
       narArr: [
@@ -58,7 +57,7 @@ export default {
         },
         {
           path: "./mProduct",
-          title: "产品中心"
+          title: "产品"
         },
         {
           path: "./mAbout",
@@ -102,9 +101,9 @@ export default {
     align-items: center;
   }
   .logo {
-   margin-left: 20px;
+    margin-left: 20px;
   }
-  .logo-text{
+  .logo-text {
     margin-left: 20px;
     color: #ffffff;
     font-size: 24px;
@@ -117,7 +116,7 @@ export default {
   }
   .el-menu-demo {
     border-bottom-color: #00000000 !important;
-    margin-left:auto;
+    margin-left: auto;
     margin-right: 20px;
   }
   .el-menu-child {

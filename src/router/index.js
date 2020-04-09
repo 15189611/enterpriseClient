@@ -7,6 +7,8 @@ import mAbout from '@/pages/about'
 import mNewsaction from '@/pages/newsaction'
 import mContact from '@/pages/contact'
 import mJoin from '@/pages/join'
+
+
 import mProductDetails from '@/pages/product_details'
 
 Vue.use(Router)
@@ -26,7 +28,17 @@ export default new Router({
     {
       path: '/mAbout',
       name: '关于我们',
-      component: mAbout
+      component: mAbout,
+      children: [
+        {
+          path: 'mProductDetails',
+          component: mProductDetails,
+        },
+        {
+          path: 'mProductDetails2',
+          component: mProduct,
+        },
+      ]
     },
     {
       path: '/mNewsaction',

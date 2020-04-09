@@ -23,8 +23,7 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .hello {
-  color: greenyellow;
+   color: white;
   text-align: center;
-    background: white;
 }
 </style>

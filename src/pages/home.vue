@@ -46,8 +46,8 @@ export default {
   justify-content: center;
 }
 .text{
-   color: greenyellow;
-   height:1200px;
+   color: white;
+   /* height:1200px; */
    text-align: center;
 }
 </style>

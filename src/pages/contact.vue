@@ -81,6 +81,5 @@ export default {
 .parent {
   width: 100%;
   text-align: center;
-  background: white;
 }
 </style>

@@ -69,11 +69,12 @@ export default {
   margin: 0 auto;
   display: flex;
   justify-content: center;
-	background: #464444;
+	// background: #464444;
+  background: white;
 }
 .tabsa {
   font-size: 22px;
-  color: white;
+  color: 464444;
   font-weight: 600;
   margin-bottom: 14px;
 }

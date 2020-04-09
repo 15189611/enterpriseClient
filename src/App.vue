@@ -37,7 +37,8 @@ export default {
   display: flex;
   flex-direction: column;
   height: 100%;
-  background-image: url("/static/images/intro-bg.jpg");
+  /* background-image: url("/static/images/intro-bg.jpg"); */
+  background: #464444;
 }
 
 .header {

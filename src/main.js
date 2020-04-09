@@ -101,6 +101,7 @@ Vue.use(MenuItem);
 Vue.use(Upload);
 Vue.use(Button);
 
+
 // Vue.use(Pagination);
 // Vue.use(Dialog);
 // Vue.use(Autocomplete);
@@ -157,8 +158,8 @@ Vue.use(Button);
 // Vue.use(Transfer);
  Vue.use(Container);
 // Vue.use(Header);
-// Vue.use(Aside);
-// Vue.use(Main);
+Vue.use(Aside);
+Vue.use(Main);
 // Vue.use(Footer);
 Vue.use(Timeline);
 Vue.use(TimelineItem);

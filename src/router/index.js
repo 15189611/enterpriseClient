@@ -10,6 +10,7 @@ import mJoin from '@/pages/join'
 
 
 import mProductDetails from '@/pages/product_details'
+import mAboutSelf from '@/pages/about_self'
 
 Vue.use(Router)
 
@@ -38,6 +39,10 @@ export default new Router({
           path: 'mProductDetails2',
           component: mProduct,
         },
+        {
+          path: 'mAboutSelf',
+          component: mAboutSelf,
+        }
       ]
     },
     {
@@ -60,7 +65,7 @@ export default new Router({
       name: '产品详情',
       component: mProductDetails
     },
-
+  
 
 
     

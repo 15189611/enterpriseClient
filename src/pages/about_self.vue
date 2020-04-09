@@ -1,61 +1,35 @@
 <template>
   <div class="hello">
-    <!-- <el-container>
-      <el-aside class="aside" style="width:400px;">
+    <div class="el-content-parent">
+      <div class="el-content">
+        <el-timeline :reverse="reverse" class="time-line">
+          <el-timeline-item
+            v-for="(activity, index) in activities"
+            :hide-timestamp="true"
+            :key="index"
+            :timestamp="activity.timestamp"
+            type="warning"
+            :color="activity.color"
+            :icon="activity.icon"
+          >{{activity.time}}</el-timeline-item>
+        </el-timeline>
+      </div>
 
-        <div class="left-title">
-          <el-menu
-            :default-active="activeIndex"
-            @select="handleSelect"
-            background-color="transparent"
-            class="el-menu-vertical-demo"
-            text-color="#ffffff"
-            active-text-color="#1f86ed"
-            :router="isRouter"
-          >
-            <el-submenu index="1">
-              <template slot="title">
-                <i class="el-icon-star-on"></i>
-                <span>成立完成过程</span>
-              </template>
-              
-              <el-menu-item-group>
-                <el-menu-item index="1-1">选项1</el-menu-item>
-                <el-menu-item index="1-2">选项2</el-menu-item>
-              </el-menu-item-group>
-            </el-submenu>
-
-            <el-menu-item index="/mAbout/mProductDetails">
-              <i class="el-icon-star-on"></i>
-              <span slot="title">愿景</span>
-            </el-menu-item>
-
-            <el-menu-item index="/mAbout/mProductDetails2">
-              <i class="el-icon-star-on"></i>
-              <span slot="title">目标</span>
-            </el-menu-item>
-
-            <el-menu-item index="/mAbout/mAboutSelf">
-              <i class="el-icon-star-on"></i>
-              <span slot="title">创始团队</span>
-            </el-menu-item>
-
-            <el-menu-item index="5">
-              <i class="el-icon-star-on"></i>
-              <span slot="title">公众号</span>
-            </el-menu-item>
-
-          </el-menu>
-
-        </div>
-        
-      </el-aside>
-
-      <el-main class="el-main">
-        <router-view />
-      </el-main>
-      
-    </el-container> -->
+      <div class="el-content2">
+        <el-timeline :reverse="reverse" class="time-line2">
+          <el-timeline-item
+            v-for="(activity, index) in activities"
+            :hide-timestamp="true"
+            :key="index"
+            :timestamp="activity.timestamp"
+            type="warning"
+            :color="activity.color"
+            :icon="activity.icon"
+          >{{activity.content}}</el-timeline-item>
+        </el-timeline>
+      </div>
+    </div>
+    
   </div>
 </template>
 
@@ -63,9 +37,7 @@
 export default {
   data() {
     return {
-      activeIndex: "/mAbout/mProductDetails",
       reverse: false,
-      isRouter: true,
       activities: [
         {
           time: "2015-2017年",
@@ -110,16 +82,12 @@ export default {
       ]
     };
   },
-  methods: {
-    handleSelect(key, keyPath) {
-      console.log("charles="+ key, keyPath);
-    }
-  }
+  methods: {}
 };
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style lang="scss" scoped>
+<style  lang="scss" scoped>
 .hello {
   display: flex;
 }
@@ -127,22 +95,23 @@ export default {
 .aside {
   color: white;
   margin-top: 20px;
- }
+}
 
- .left-title{
+.left-title {
   margin-left: 25%;
 }
 
 .el-menu-vertical-demo {
   border-right-color: transparent !important;
 }
-.el-menu-item:focus, .el-menu-item:hover{
-   background-color: transparent !important;
+.el-menu-item:focus,
+.el-menu-item:hover {
+  background-color: transparent !important;
 }
-.el-menu-vertical-demo /deep/ .el-submenu__title{
-   background-color: transparent !important;
+.el-menu-vertical-demo /deep/ .el-submenu__title {
+  background-color: transparent !important;
 }
-.el-menu-vertical-demo /deep/ .el-submenu__icon-arrow{
+.el-menu-vertical-demo /deep/ .el-submenu__icon-arrow {
   // right: 25%;
 }
 

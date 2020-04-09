@@ -39,35 +39,8 @@ export default {
   data() {
     return {
       showLogoText: true,
-      activeIndex: "./mHome",
+      activeIndex: "/mHome",
       isRouter: true,
-      activeName: './mHome',
-      narArr: [
-        {
-          path: "./mHome",
-          title: "首页"
-        },
-        {
-          path: "./mProduct",
-          title: "产品"
-        },
-        {
-          path: "./mAbout",
-          title: "关于我们"
-        },
-        {
-          path: "./mNewsaction",
-          title: "最新动向"
-        },
-        {
-          path: "./mContact",
-          title: "联系我们"
-        },
-        {
-          path: "./mJoin",
-          title: "加入我们"
-        }
-      ]
     };
   },
   methods: {
@@ -107,11 +80,11 @@ export default {
     display: flex;
   }
  .el-menu--horizontal>.el-menu-item:hover{
-   background-color: transparent !important;
+    background-color: transparent !important;
  }
   .el-menu-demo {
-    // border-bottom-color: #00000000 !important;
-    border-bottom-color: transparent !important;
+    border-bottom-color: #00000000 !important;
+    //border-bottom-color: transparent !important;
     margin-left: auto;
     margin-right: 20px;
   }

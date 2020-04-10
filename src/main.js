@@ -15,6 +15,12 @@ if(process.env.NODE_ENV == 'development'){
   axios.defaults.baseURL='http://47.101.52.36:8080'; 
 }
 
+router.beforeEach((to, from, next) => {
+  window.document.title = to.meta.title;//网页注入 title
+  next()
+
+})
+
 import {
   Pagination,
   Dialog,
@@ -98,6 +104,7 @@ import {
 Vue.use(Menu);
 Vue.use(Submenu);
 Vue.use(MenuItem);
+Vue.use(MenuItemGroup);
 Vue.use(Upload);
 Vue.use(Button);
 
@@ -108,7 +115,6 @@ Vue.use(Button);
 // Vue.use(Dropdown);
 // Vue.use(DropdownMenu);
 // Vue.use(DropdownItem);
-// Vue.use(MenuItemGroup);
 // Vue.use(Input);
 // Vue.use(InputNumber);
 // Vue.use(Radio);

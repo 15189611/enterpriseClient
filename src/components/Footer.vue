@@ -7,51 +7,30 @@
  -->
 <template>
   <div class="Footer">
-
     <div class="tab_bom">
-        <div class="text_box" >
-          <p class="tabsa">联系我们</p>
-          <p class="pas">公司：最终前沿</p>
-          <p class="pas">地址 ：上海市浦东新区罗山路</p>
-          <p class="pas">电话：021-3030323</p>
-          <p class="pas">邮箱：qianyanzhi@163.com</p>
+      <div class="company-des">
+        <div class="des-auth">CopyRight@2020</div>
+        <div class="des-backup">沪ICP备********号</div>
+        <div class="des-name">版权所有 C 2020北京前沿探索深空科技有限公司 保留所有权利</div>
+      </div>
+
+      <div class="company-icon">
+        <div class="icon-des">关注我们</div>
+        <div class="icon-parent">
+          <img class="icon-img" src="../../static/images/collect_money_success.png" />
+          <img class="icon-img" src="../../static/images/collect_money_code_introduction_statistic.png" />
+          <img class="icon-img" src="../../static/images/collect_money_code_introduction_receive.png" />
+          <img class="icon-img" src="../../static/images/collect_money_code_introduction_notice.png" />
         </div>
-        <div class="text_box_to" >
-          <p class="tabsa">品牌故事</p>
-          <p class="pas">U宝介绍</p>
-          <p class="pas">U宝名人堂</p>
-          <p class="pas">U团队</p>
-          <p class="pas">资质荣誉</p>
-        </div>
-        <div class="text_box_to">
-          <p class="tabsa">发声课程</p>
-          <p class="pas">课程体系</p>
-          <p class="pas">特色介绍</p>
-          <p class="pas">大家说</p>
-        </div>
-        <div class="text_box_to" >
-          <p class="tabsa">发声合作</p>
-          <p class="pas">市场分析</p>
-          <p class="pas">加盟优势</p>
-          <p class="pas">加盟流程</p>
-          <p class="pas">全国分布</p>
-        </div>
-        <div class="text_box_to">
-          <p class="tabsa">发声动态</p>
-          <p class="pas">U发布</p>
-          <p class="pas">新闻中心</p>
-          <p class="pas">合作共赢</p>
-        </div>
+      </div>
     </div>
-    
   </div>
 </template>
 
 <script>
 export default {
   data() {
-    return {
-    };
+    return {};
   },
   methods: {}
 };
@@ -68,27 +47,41 @@ export default {
   width: 100%;
   margin: 0 auto;
   display: flex;
-  justify-content: center;
-	// background: #464444;
   background: white;
+  justify-content: space-around;
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
-.tabsa {
-  font-size: 22px;
-  color: 464444;
-  font-weight: 600;
-  margin-bottom: 14px;
+
+.company-des {
+  flex-direction: column;
 }
-.pas {
+.des-auth {
   font-size: 14px;
-  color: #adadad;
 }
-.text_box {
-  width: 208px;
-  height: 200px;
-  margin-right: 30px;
+.des-backup {
+  font-size: 12px;
+  margin-top: 15px;
 }
-.text_box_to {
-  width:  124px;
-  height: 200px;
+.des-name {
+  margin-top: 5px;
+  font-size: 12px;
+}
+
+.company-icon{
+  flex-direction: column;
+}
+
+.icon-des {
+  font-size: 14px;
+  text-align: right;
+}
+.icon-parent {
+  margin-top: 15px;
+}
+.icon-img{
+  width: 25px;
+  height: 25px;
+  margin-left: 30px;
 }
 </style>

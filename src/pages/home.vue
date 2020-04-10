@@ -1,5 +1,5 @@
 <template>
-  <div class="parent">
+  <div class="home-parent">
 
     <div class="text">首页</div>
   
@@ -41,7 +41,7 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-.parent {
+.home-parent {
    display: flex;
   justify-content: center;
 }

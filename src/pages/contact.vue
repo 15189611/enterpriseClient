@@ -1,5 +1,5 @@
 <template>
-  <div class="parent">
+  <div class="contact-parent">
     <el-button slot="trigger" size="small" type="primary" @click="downFile(imgurl)">下载模板</el-button>
   </div>
 </template>
@@ -78,7 +78,7 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-.parent {
+.contact-parent {
   width: 100%;
   text-align: center;
 }

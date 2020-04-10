@@ -1,11 +1,11 @@
 <template>
-  <div class="hello">
-    <!-- <el-container>
+  <div class="about-parent">
+    <el-container>
       <el-aside class="aside" style="width:400px;">
 
         <div class="left-title">
           <el-menu
-            :default-active="activeIndex"
+            :default-active="$route.path"
             @select="handleSelect"
             background-color="transparent"
             class="el-menu-vertical-demo"
@@ -13,7 +13,12 @@
             active-text-color="#1f86ed"
             :router="isRouter"
           >
-            <el-submenu index="1">
+
+            <el-menu-item index="/mAbout/mAboutSelf">
+              <i class="el-icon-star-on"></i>
+              <span slot="title">成立完成过程</span>
+            </el-menu-item>
+            <!-- <el-submenu index="1">
               <template slot="title">
                 <i class="el-icon-star-on"></i>
                 <span>成立完成过程</span>
@@ -23,30 +28,25 @@
                 <el-menu-item index="1-1">选项1</el-menu-item>
                 <el-menu-item index="1-2">选项2</el-menu-item>
               </el-menu-item-group>
-            </el-submenu>
+            </el-submenu> -->
 
             <el-menu-item index="/mAbout/mProductDetails">
               <i class="el-icon-star-on"></i>
               <span slot="title">愿景</span>
             </el-menu-item>
-
             <el-menu-item index="/mAbout/mProductDetails2">
               <i class="el-icon-star-on"></i>
               <span slot="title">目标</span>
             </el-menu-item>
-
-            <el-menu-item index="/mAbout/mAboutSelf">
+            <el-menu-item index="">
               <i class="el-icon-star-on"></i>
               <span slot="title">创始团队</span>
             </el-menu-item>
-
-            <el-menu-item index="5">
+            <el-menu-item index="">
               <i class="el-icon-star-on"></i>
               <span slot="title">公众号</span>
             </el-menu-item>
-
           </el-menu>
-
         </div>
         
       </el-aside>
@@ -55,7 +55,7 @@
         <router-view />
       </el-main>
       
-    </el-container> -->
+    </el-container>
   </div>
 </template>
 
@@ -63,7 +63,6 @@
 export default {
   data() {
     return {
-      activeIndex: "/mAbout/mProductDetails",
       reverse: false,
       isRouter: true,
       activities: [
@@ -120,7 +119,7 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss" scoped>
-.hello {
+.about-parent {
   display: flex;
 }
 

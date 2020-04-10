@@ -1,5 +1,5 @@
 <template>
-  <div class="hello">
+  <div class="product-parent">
     产品中心
   </div>
 </template>
@@ -20,8 +20,8 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-.hello {
+.product-parent {
    color: white;
-  text-align: center;
+   text-align: center;
 }
 </style>

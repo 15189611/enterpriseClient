@@ -1,5 +1,5 @@
 <template>
-  <div class="parent">
+  <div class="join-parent">
  
     <div class="upload-parent">
       <el-upload
@@ -92,7 +92,7 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-.parent {
+.join-parent {
   width: 100%;
   height: 100%;
 }

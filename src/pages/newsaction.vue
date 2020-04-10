@@ -1,5 +1,5 @@
 <template>
-  <div class="hello">
+  <div class="newsaction-parent">
     最新动向
 
     
@@ -22,8 +22,8 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-.hello {
+.newsaction-parent {
    color: white;
-  text-align: center;
+   text-align: center;
 }
 </style>

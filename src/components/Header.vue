@@ -4,13 +4,13 @@
     <div class="header">
       <!-- <div class="logo" v-if="!showLogoText">
         <img src="../../static/images/logo.jpg" />
-      </div> -->
+      </div>-->
 
       <div class="logo-text" v-if="showLogoText">最终前沿</div>
-    
+
       <div class="tab">
         <el-menu
-          :default-active="$route.path"
+          :default-active="path"
           class="el-menu-demo"
           mode="horizontal"
           @select="handleSelect"
@@ -26,9 +26,7 @@
           <el-menu-item index="/mContact" class="el-menu-child">联系我们</el-menu-item>
           <el-menu-item index="/mJoin" class="el-menu-child">加入我们</el-menu-item>
         </el-menu>
-
       </div>
-
     </div>
   </div>
 </template>
@@ -37,17 +35,29 @@
 export default {
   data() {
     return {
+      path: "",
       showLogoText: true,
-      activeIndex: "/mHome",
-      isRouter: true,
+      isRouter: true
     };
   },
   methods: {
     handleSelect(key, keyPath) {
       console.log(key, keyPath);
-      console.log("path=="+this.$route.path)
-      this.activeIndex = key;
+    },
+    onRouteChanged() {
+      let that = this;
+      if (that.$route.path == "/") {
+        that.path = "/mHome";
+      } else {
+        that.path = that.$route.path;
+      }
     }
+  },
+  created() {
+    this.onRouteChanged();
+  },
+  watch: {
+    $route: "onRouteChanged"
   }
 };
 </script>
@@ -76,12 +86,12 @@ export default {
     width: 100%;
     display: flex;
   }
-  .el-menu--horizontal>.el-menu-item.is-active {
-      background-color: transparent !important;
-  }
- .el-menu--horizontal>.el-menu-item:hover{
+  .el-menu--horizontal > .el-menu-item.is-active {
     background-color: transparent !important;
- }
+  }
+  .el-menu--horizontal > .el-menu-item:hover {
+    background-color: transparent !important;
+  }
   .el-menu-demo {
     border-bottom-color: transparent !important;
     margin-left: auto;

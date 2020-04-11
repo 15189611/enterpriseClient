@@ -17,6 +17,15 @@ export default {
   components: {
     Header,
     Footer
+  },
+  methods: {
+    onRouteChanged() {}
+  },
+  created() {
+    this.onRouteChanged();
+  },
+  watch: {
+    $route: "onRouteChanged"
   }
 };
 </script>
@@ -38,7 +47,7 @@ export default {
   flex-direction: column;
   height: 100%;
   /* background-image: url("/static/images/intro-bg.jpg"); */
-  background: #464444;
+  background: #545c64;
 }
 
 .header {

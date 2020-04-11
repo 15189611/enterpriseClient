@@ -49,8 +49,8 @@ export default {
   display: flex;
   background: white;
   justify-content: space-around;
-  padding-top: 20px;
-  padding-bottom: 20px;
+  padding-top: 15px;
+  padding-bottom: 15px;
 }
 
 .company-des {
@@ -70,8 +70,8 @@ export default {
 
 .company-icon{
   flex-direction: column;
+  
 }
-
 .icon-des {
   font-size: 14px;
   text-align: right;

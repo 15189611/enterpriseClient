@@ -30,17 +30,35 @@
 
       <div class="banner-bottom-parent">
         <div v-for="item in 3" :key="item">
-          <div class="banner-bottom" :style="{backgroundImage: 'url(' + converImgUrl + ')',backgroundSize:'contain'}">>
-             <!-- <img src="../../static/images/collect_money_success.png"  /> -->
-             <div class="banner-bottom-des-parent">
-               新闻标题{{item}}
-             </div>
+          <div
+            class="banner-bottom"
+            :style="{backgroundImage: 'url(' + converImgUrl + ')',backgroundSize:'contain'}"
+          >
+            <!-- <img src="../../static/images/collect_money_success.png"  /> -->
+            <div class="banner-bottom-des-parent">新闻标题{{item}}</div>
           </div>
-         
         </div>
-
       </div>
     </div>
+
+    <div class="head-bottom">
+      <div class="head-bottom-des">
+        <div class="head-bottom-des-part1">
+          <img class="des-part-icon" src="../../static/images/collect_money_success.png" />
+          <div class="des-part-title">关于最终前沿</div>
+          <div class="des-part-info">最终前沿是一家中国致力于推动太空科技的一家私有企业，目前总部在北京</br>公司第一步以商业应用为起点，解决用户实实在在存在的问题为目标</div>
+        </div>
+
+        <div class="head-bottom-des-part2">
+          <img class="des-part-icon" src="../../static/images/collect_money_success.png" />
+          <div class="des-part-title">联系最终前沿</div>
+          <div class="des-part-info">如果想要联系我们</div>
+          <div class="des-part-email">请发邮件至info@finailfrontier.cn</div>
+        </div>
+      </div>
+      
+    </div>
+
   </div>
 </template>
 
@@ -53,7 +71,7 @@ export default {
     return {
       msg: "Welcome to Your Vue.js App",
       currentData: "",
-      converImgUrl : "../../static/images/intro-bg.jpg",
+      converImgUrl: "../../static/images/intro-bg.jpg"
     };
   },
   methods: {
@@ -87,7 +105,9 @@ export default {
   /* background-image: url("/static/images/intro-bg.jpg"); */
   flex-direction: column;
 }
+.head-bg {
 
+}
 .head-bg-des {
   position: absolute;
   width: 100%;
@@ -107,7 +127,6 @@ export default {
 .head-middle {
   background: #545c64;
 }
-
 .banner-parent {
   margin-left: 200px;
   margin-right: 200px;
@@ -123,7 +142,7 @@ export default {
 }
 
 .el-carousel__item:nth-child(2n + 1) {
-  background-color: #d3dce6;
+  background-color: #858a91;
 }
 
 .banner-des-parent {
@@ -145,18 +164,65 @@ export default {
   margin-left: 200px;
   margin-right: 200px;
 }
-.banner-bottom{
+.banner-bottom {
   height: 450px;
   width: 450px;
 }
-.banner-bottom-des-parent{
+.banner-bottom-des-parent {
   position: relative;
   bottom: 0;
-  top: 90%;
-  background-color:rgba(0,0,0,0.4);
+  top: 95%;
+  background-color: rgba(0, 0, 0, 0.4);
   text-align: center;
   color: white;
 }
 
+.head-bottom {
+  background-color: rgba(0, 0, 0, 0.7);
+}
+.head-bottom-des {
+  padding-top: 100px;
+  margin-bottom: 200px;
+  margin-left: 200px;
+  margin-right: 200px;
+  display: flex;
+  flex-direction: row;
+  margin-top: 20px;
+}
+
+.head-bottom-des-part1{
+  flex: 1;
+  margin-left: 100px;
+}
+
+.des-part-icon{
+  display: flex;
+}
+.des-part-title{
+  margin-top: 20px;
+  font-weight: 700;
+  color: white;
+  display: inline-block;
+  padding-bottom: 8px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #1f86ed;
+}
+.des-part-info{
+  margin-top: 20px;
+  font-size: 14px;
+  color: white;
+  line-height: 25px;
+  
+}
+.head-bottom-des-part2{
+  flex: 1;
+  margin-left: 100px;
+}
+.des-part-email{
+  color: white;
+  font-size: 14px;
+  line-height: 25px;
+}
 
 </style>

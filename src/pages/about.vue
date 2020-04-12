@@ -16,7 +16,7 @@
 
             <el-menu-item index="/mAbout/mAboutSelf">
               <i class="el-icon-star-on"></i>
-              <span slot="title">成立完成过程</span>
+              <span slot="title">成立过程</span>
             </el-menu-item>
             <!-- <el-submenu index="1">
               <template slot="title">
@@ -38,7 +38,7 @@
               <i class="el-icon-star-on"></i>
               <span slot="title">目标</span>
             </el-menu-item>
-            <el-menu-item index="">
+            <el-menu-item index="/mAbout/mCreateTeam">
               <i class="el-icon-star-on"></i>
               <span slot="title">创始团队</span>
             </el-menu-item>
@@ -120,6 +120,7 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss" scoped>
 .about-parent {
+  background: #545c64; 
   display: flex;
 }
 
@@ -151,7 +152,6 @@ export default {
   text-align: left;
 }
 .el-main {
-  margin-top: 20px;
   text-align: center;
 }
 .el-content-parent {

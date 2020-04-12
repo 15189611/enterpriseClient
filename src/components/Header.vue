@@ -41,6 +41,7 @@ export default {
       showLogoText: true,
       path: '',
       isRouter: true,
+      mAboutPath :'/mAbout'
     };
   },
   methods: {
@@ -56,7 +57,15 @@ export default {
       if(that.$route.path == '/'){
         that.path = '/mHome';
       }else{
+        // console.log('Charles='+that.$route.path)
+        // var indexPath = that.$route.path.split('/')[1]
+        // if(indexPath == 'mAbout'){
+        //    that.mAboutPath = '/mAbout'
+        // }else{
+        //    that.path = that.$route.path
+        // }
         that.path = that.$route.path
+        
       }
     }
   },

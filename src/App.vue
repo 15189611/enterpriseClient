@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <div class="wrapper">
+    <div :class="[isHome ? 'wrapper' : 'wrapper2' ]">
       <Header class="header" />
       <router-view class="middle" />
       <Footer class="footer" />
@@ -14,15 +14,37 @@ import Footer from "@/components/Footer";
 
 export default {
   name: "App",
+  data() {
+      return {
+        screenWidth: document.body.clientWidth, // 屏幕尺寸
+        isHome : true,
+      }
+    },
   components: {
     Header,
     Footer
   },
   methods: {
-    onRouteChanged() {}
+    onRouteChanged() {
+      if(this.$route.path == '/' || this.$route.path == '/mHome'){
+        this.isHome = true;
+      }else{
+        this.isHome = false;
+      }
+    }
   },
   created() {
     this.onRouteChanged();
+  },
+  mounted(){
+     const that = this
+      window.onresize = () => {
+        return (() => {
+          window.screenWidth = document.body.clientWidth
+          that.screenWidth = window.screenWidth
+          console.log('宽=='+ window.screenWidth)
+        })()
+      }
   },
   watch: {
     $route: "onRouteChanged"
@@ -46,8 +68,14 @@ export default {
   display: flex;
   flex-direction: column;
   height: 100%;
-  /* background-image: url("/static/images/intro-bg.jpg"); */
-  background: #545c64;
+  background-image: url("/static/images/intro-bg.jpg"); 
+}
+
+.wrapper2 {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: #545c64; 
 }
 
 .header {

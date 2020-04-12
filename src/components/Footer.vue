@@ -15,7 +15,6 @@
       </div>
 
       <div class="company-icon">
-        <div class="icon-des">关注我们</div>
         <div class="icon-parent">
           <img class="icon-img" src="../../static/images/collect_money_success.png" />
           <img class="icon-img" src="../../static/images/collect_money_code_introduction_statistic.png" />
@@ -72,12 +71,8 @@ export default {
   flex-direction: column;
   
 }
-.icon-des {
-  font-size: 14px;
-  text-align: right;
-}
 .icon-parent {
-  margin-top: 15px;
+  margin-top: 45px;
 }
 .icon-img{
   width: 25px;

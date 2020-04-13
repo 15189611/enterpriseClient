@@ -34,7 +34,7 @@ export default {
     }
   },
   created() {
-    this.onRouteChanged();
+    //this.onRouteChanged();
   },
   mounted(){
      const that = this
@@ -47,7 +47,10 @@ export default {
       }
   },
   watch: {
-    $route: "onRouteChanged"
+    $route: {
+      immediate: true,
+      handler: "onRouteChanged"
+    }
   }
 };
 </script>

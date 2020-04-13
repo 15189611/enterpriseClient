@@ -18,6 +18,10 @@ Vue.use(Router)
 export default new Router({
   routes: [
     {
+      path: '/', 
+      redirect: '/mHome' 
+    },
+    {
       path: '/mHome',
       name: '首页',
       component: mHome,
@@ -97,13 +101,13 @@ export default new Router({
 
 
     
-    { 
-      path: '/*', 
-      name : '首页',
-      component: mHome,
-      meta:{
-        title: '首页'
-      },
-    },
+    // { 
+    //   path: '/', 
+    //   redirect : '首页',
+    //   component: mHome,
+    //   meta:{
+    //     title: '首页'
+    //   },
+    // },
   ]
 })

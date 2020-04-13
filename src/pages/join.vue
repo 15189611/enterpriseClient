@@ -1,18 +1,15 @@
 <template>
   <div class="join-parent">
-
-     <el-container>
+    <el-container>
       <el-aside class="aside" style="width:400px;">
         <div class="left-title">加入我们</div>
+          <div class="left-title">喜欢你们</div>
+        <!-- <div class="left-title active">喜欢你们</div> -->
       </el-aside>
 
-      <el-main class="el-main">
-        
-      </el-main>
-      
+      <el-main class="el-main"></el-main>
     </el-container>
-    
- 
+
     <!-- <div class="upload-parent">
       <el-upload
         class="upload-demo"
@@ -39,8 +36,7 @@
         >上传到服务器</el-button>
         <div slot="tip" class="el-upload__tip">上传你的简历，且不超过500kb</div>
       </el-upload>
-    </div> -->
-
+    </div>-->
   </div>
 </template>
 
@@ -106,22 +102,44 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style  lang="scss" scoped>
 .join-parent {
-  background: #545c64; 
+  background: #545c64;
   display: flex;
 }
 .aside {
-  color: #1f86ed;
+  //color: #1f86ed;
   margin-top: 20px;
   text-align: center;
- }
- .left-title{
-    border-bottom-color: #1f86ed;
-   border-bottom-style: solid;
-   border-bottom-width: 2px;
-   padding-bottom: 10px;
-   display: inline-block;
- }
+}
 
+.left-title{
+  color: white;
+}:before {
+    content: "";
+    position: absolute;
+    bottom: -15px;
+    top: auto;
+    left: auto;
+    height: 3px;
+    width: 22px;
+    background-color: white;
+}
+
+.left-title {
+  position: relative;
+}
+.active {
+  color: #1f86ed;
+  &::before {
+    content: "";
+    position: absolute;
+    bottom: -15px;
+    top: auto;
+    left: auto;
+    height: 3px;
+    width: 22px;
+    background-color: #1f86ed;
+  }
+}
 
 .upload-parent {
   display: flex;

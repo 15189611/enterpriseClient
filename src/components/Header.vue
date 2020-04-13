@@ -4,11 +4,11 @@
     <div class="header">
       <!-- <div class="logo" v-if="!showLogoText">
         <img src="../../static/images/logo.jpg" />
-      </div> -->
+      </div>-->
 
       <div class="logo-text" v-if="showLogoText">最终前沿</div>
       <!-- background-color="#545c64" -->
-      
+
       <div class="tab">
         <el-menu
           :default-active="path"
@@ -27,9 +27,7 @@
           <el-menu-item index="/mContact" class="el-menu-child">联系我们</el-menu-item>
           <el-menu-item index="/mJoin" class="el-menu-child">加入我们</el-menu-item>
         </el-menu>
-
       </div>
-
     </div>
   </div>
 </template>
@@ -39,41 +37,36 @@ export default {
   data() {
     return {
       showLogoText: true,
-      path: '',
-      isRouter: true,
-      mAboutPath :'/mAbout'
+      path: "",
+      isRouter: true
     };
   },
   methods: {
     handleClick(tab, event) {
-      console.log(tab.name ,event);
+      console.log(tab.name, event);
       this.$router.push(tab.name);
     },
     handleSelect(key, keyPath) {
       console.log(key, keyPath);
     },
-    onRouteChanged(){
-      let that = this; 
-      if(that.$route.path == '/'){
-        that.path = '/mHome';
-      }else{
-        // console.log('Charles='+that.$route.path)
-        // var indexPath = that.$route.path.split('/')[1]
-        // if(indexPath == 'mAbout'){
-        //    that.mAboutPath = '/mAbout'
-        // }else{
-        //    that.path = that.$route.path
-        // }
-        that.path = that.$route.path
-        
+    onRouteChanged() {
+      let that = this;
+      var indexPath = that.$route.path.split("/")[1];
+      if (indexPath == "mAbout") {
+        that.path = "/mAbout/mAboutSelf";
+      } else {
+        that.path = that.$route.path;
       }
     }
   },
   created() {
-    this.onRouteChanged();
+    // this.onRouteChanged();
   },
   watch: {
-    $route: "onRouteChanged"
+    $route: {
+      immediate: true,
+      handler: "onRouteChanged"
+    }
   }
 };
 </script>
@@ -83,7 +76,7 @@ export default {
 .parent {
   width: 100%;
   margin: 0px auto;
-  
+
   .header {
     display: flex;
     width: 100%;
@@ -101,12 +94,12 @@ export default {
     width: 100%;
     display: flex;
   }
- .el-menu--horizontal>.el-menu-item:hover{
+  .el-menu--horizontal > .el-menu-item:hover {
     background-color: transparent !important;
- }
-.el-menu--horizontal>.el-menu-item.is-active{
+  }
+  .el-menu--horizontal > .el-menu-item.is-active {
     background-color: transparent !important;
- }
+  }
   .el-menu-demo {
     border-bottom-color: transparent !important;
     margin-left: auto;

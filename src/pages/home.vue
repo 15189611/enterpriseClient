@@ -128,8 +128,8 @@ export default {
   background: #545c64;
 }
 .banner-parent {
-  margin-left: 200px;
-  margin-right: 200px;
+  margin-left: 350px;
+  margin-right: 350px;
 }
 .banner-parent /deep/ .el-carousel__container {
   height: 500px;
@@ -161,12 +161,13 @@ export default {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  margin-left: 200px;
-  margin-right: 200px;
+  margin-left: 350px;
+  margin-right: 350px;
 }
 .banner-bottom {
   height: 450px;
-  width: 450px;
+  //width: 450px;
+  width: 33%;
 }
 .banner-bottom-des-parent {
   position: relative;
@@ -183,8 +184,8 @@ export default {
 .head-bottom-des {
   padding-top: 100px;
   margin-bottom: 200px;
-  margin-left: 200px;
-  margin-right: 200px;
+  margin-left: 350px;
+  margin-right: 350px;
   display: flex;
   flex-direction: row;
   margin-top: 20px;

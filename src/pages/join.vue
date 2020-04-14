@@ -2,9 +2,29 @@
   <div class="join-parent">
     <el-container>
       <el-aside class="aside" style="width:400px;">
-        <div class="left-title">加入我们</div>
-          <div class="left-title">喜欢你们</div>
-        <!-- <div class="left-title active">喜欢你们</div> -->
+          
+          <el-menu
+            :default-active="path"
+            background-color="transparent"
+            class="el-menu-vertical-demo"
+            text-color="#ffffff"
+            active-text-color="#1f86ed"
+          >
+            <el-submenu index="1">
+              <template slot="title">
+                <span class="left-title">关于我们</span>
+              </template>
+
+              <el-menu-item-group>
+                <el-menu-item index="1-1" class="left-title">软件工程师</el-menu-item>
+                <el-menu-item index="1-2" class="left-title">硬件工程师</el-menu-item>
+              </el-menu-item-group>
+
+            </el-submenu>
+
+          </el-menu>
+        
+
       </el-aside>
 
       <el-main class="el-main"></el-main>
@@ -48,7 +68,8 @@ export default {
     return {
       //http://47.101.52.36:8080/enterprise/upload/test.do
       fileList: [],
-      url: "/enterprise/upload/test.do"
+      url: "/enterprise/upload/test.do",
+      path : ''
     };
   },
   methods: {
@@ -94,6 +115,16 @@ export default {
     },
     handerChange(file, fileList) {
       console.log("change==" + file);
+    },
+    onRouteChanged() {
+      let that = this;
+      that.path = that.$route.path;
+    }
+  },
+  watch: {
+    $route: {
+      immediate: true,
+      handler: "onRouteChanged"
     }
   }
 };
@@ -111,12 +142,34 @@ export default {
   text-align: center;
 }
 
+.el-menu-vertical-demo {
+  border-right-color: transparent !important;
+}
+.el-menu-item:focus, .el-menu-item:hover{
+   background-color: transparent !important;
+}
+.el-menu-vertical-demo /deep/ .el-submenu__title{
+   background-color: transparent !important;
+}
+  
+.el-menu-vertical-demo /deep/ .el-menu-item{
+  margin-left: 40px;
+}
+.el-menu-vertical-demo /deep/ .el-submenu__icon-arrow{
+  display: none;
+}
+
+.about-class{
+
+}
+
 .left-title{
   color: white;
-}:before {
+}
+.left-title::before {
     content: "";
     position: absolute;
-    bottom: -15px;
+    bottom: 0px;
     top: auto;
     left: auto;
     height: 3px;
@@ -124,22 +177,22 @@ export default {
     background-color: white;
 }
 
-.left-title {
-  position: relative;
-}
-.active {
-  color: #1f86ed;
-  &::before {
-    content: "";
-    position: absolute;
-    bottom: -15px;
-    top: auto;
-    left: auto;
-    height: 3px;
-    width: 22px;
-    background-color: #1f86ed;
-  }
-}
+// .left-title {
+//   position: relative;
+// }
+// .active {
+//   color: #1f86ed;
+//   &::before {
+//     content: "";
+//     position: absolute;
+//     bottom: -15px;
+//     top: auto;
+//     left: auto;
+//     height: 3px;
+//     width: 22px;
+//     background-color: #1f86ed;
+//   }
+// }
 
 .upload-parent {
   display: flex;

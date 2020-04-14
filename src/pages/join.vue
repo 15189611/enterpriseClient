@@ -1,33 +1,40 @@
 <template>
   <div class="join-parent">
+
     <el-container>
       <el-aside class="aside" style="width:400px;">
-          
+    
           <el-menu
             :default-active="path"
             background-color="transparent"
             class="el-menu-vertical-demo"
             text-color="#ffffff"
             active-text-color="#1f86ed"
+            :default-openeds="openeds"
+             :router="true"
           >
             <el-submenu index="1">
               <template slot="title">
-                <span class="left-title">关于我们</span>
+                <span class="title">关于我们</span>
               </template>
-
               <el-menu-item-group>
-                <el-menu-item index="1-1" class="left-title">软件工程师</el-menu-item>
-                <el-menu-item index="1-2" class="left-title">硬件工程师</el-menu-item>
+                <el-menu-item index="/mJoin/mInterview">· 软件工程师高级别</el-menu-item>
+                <el-menu-item index="/mJoin/mInterview2">· 硬件工程师高级别</el-menu-item>
+                <el-menu-item index="/mJoin/3">· android工程师高级别</el-menu-item>
+                <el-menu-item index="/mJoin/4">· 算法工程师高级别</el-menu-item>
+                <el-menu-item index="/mJoin/5">· ios工程师高级别</el-menu-item>
               </el-menu-item-group>
-
             </el-submenu>
 
           </el-menu>
-        
+ 
 
       </el-aside>
 
-      <el-main class="el-main"></el-main>
+      <el-main class="el-main">
+        <router-view></router-view>
+      </el-main>
+
     </el-container>
 
     <!-- <div class="upload-parent">
@@ -69,7 +76,8 @@ export default {
       //http://47.101.52.36:8080/enterprise/upload/test.do
       fileList: [],
       url: "/enterprise/upload/test.do",
-      path : ''
+      path : '',
+      openeds : ['1']
     };
   },
   methods: {
@@ -119,6 +127,7 @@ export default {
     onRouteChanged() {
       let that = this;
       that.path = that.$route.path;
+      console.log("charles2"+ that.path)
     }
   },
   watch: {
@@ -135,64 +144,48 @@ export default {
 .join-parent {
   background: #545c64;
   display: flex;
+  
 }
 .aside {
-  //color: #1f86ed;
   margin-top: 20px;
-  text-align: center;
+     overflow-x:hidden;
 }
 
 .el-menu-vertical-demo {
   border-right-color: transparent !important;
+  position: relative;
+  left: 50%;
 }
+
 .el-menu-item:focus, .el-menu-item:hover{
    background-color: transparent !important;
 }
 .el-menu-vertical-demo /deep/ .el-submenu__title{
    background-color: transparent !important;
+   //submenu 标题
 }
-  
 .el-menu-vertical-demo /deep/ .el-menu-item{
-  margin-left: 40px;
+  //控制group item
+
 }
+
 .el-menu-vertical-demo /deep/ .el-submenu__icon-arrow{
   display: none;
 }
 
-.about-class{
-
+.title{
+  color: #1f86ed;
 }
-
-.left-title{
-  color: white;
-}
-.left-title::before {
+.title::before {
     content: "";
     position: absolute;
     bottom: 0px;
     top: auto;
     left: auto;
-    height: 3px;
+    height: 1px;
     width: 22px;
-    background-color: white;
+    background-color: #1f86ed;
 }
-
-// .left-title {
-//   position: relative;
-// }
-// .active {
-//   color: #1f86ed;
-//   &::before {
-//     content: "";
-//     position: absolute;
-//     bottom: -15px;
-//     top: auto;
-//     left: auto;
-//     height: 3px;
-//     width: 22px;
-//     background-color: #1f86ed;
-//   }
-// }
 
 .upload-parent {
   display: flex;

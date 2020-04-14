@@ -12,20 +12,21 @@ import mJoin from '@/pages/join'
 import mProductDetails from '@/pages/product_details'
 import mAboutSelf from '@/pages/about_self'
 import mCreateTeam from '@/pages/create-team'
+import mInterview from '@/pages/interview'
 
 Vue.use(Router)
 
 export default new Router({
   routes: [
     {
-      path: '/', 
-      redirect: '/mHome' 
+      path: '/',
+      redirect: '/mHome'
     },
     {
       path: '/mHome',
       name: '首页',
       component: mHome,
-      meta:{
+      meta: {
         title: '首页'
       }
     },
@@ -33,7 +34,7 @@ export default new Router({
       path: '/mProduct',
       name: '产品中心',
       component: mProduct,
-      meta:{
+      meta: {
         title: '产品中心'
       }
     },
@@ -46,28 +47,28 @@ export default new Router({
         {
           path: 'mProductDetails',
           component: mProductDetails,
-          meta:{
+          meta: {
             title: '关于我们'
           },
         },
         {
           path: 'mProductDetails2',
           component: mProduct,
-          meta:{
+          meta: {
             title: '关于我们'
           },
         },
         {
           path: 'mAboutSelf',
           component: mAboutSelf,
-          meta:{
+          meta: {
             title: '关于我们'
           },
         },
         {
           path: 'mCreateTeam',
           component: mCreateTeam,
-          meta:{
+          meta: {
             title: '关于我们'
           },
         }
@@ -77,7 +78,7 @@ export default new Router({
       path: '/mNewsaction',
       name: '最新动向',
       component: mNewsaction,
-      meta:{
+      meta: {
         title: '最新动向'
       },
     },
@@ -85,7 +86,7 @@ export default new Router({
       path: '/mContact',
       name: '联系我们',
       component: mContact,
-      meta:{
+      meta: {
         title: '联系我们'
       },
     },
@@ -93,14 +94,31 @@ export default new Router({
       path: '/mJoin',
       name: '加我我们',
       component: mJoin,
-      meta:{
+      redirect: '/mJoin/mInterview',
+      meta: {
         title: '加我我们'
       },
-    }, 
-  
+      children: [
+        {
+          path: 'mInterview',
+          component: mInterview,
+          meta: {
+            title: '加入我们'
+          }
+        },
+        {
+          path: 'mInterview2',
+          component: mContact,
+          meta: {
+            title: '加入我们'
+          },
+        },
+      ]
+    },
 
 
-    
+
+
     // { 
     //   path: '/', 
     //   redirect : '首页',

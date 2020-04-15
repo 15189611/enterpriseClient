@@ -1,6 +1,7 @@
 <template>
   <div id="app">
-    <div :class="[isHome ? 'wrapper' : 'wrapper2' ]">
+    <!-- :class="[isHome ? 'wrapper' : 'wrapper2' ]" -->
+    <div class="wrapper">
       <Header class="header" />
       <router-view class="middle" />
       <Footer class="footer" />
@@ -17,7 +18,7 @@ export default {
   data() {
       return {
         screenWidth: document.body.clientWidth, // 屏幕尺寸
-        isHome : true,
+        isHome : false,
       }
     },
   components: {
@@ -71,18 +72,19 @@ export default {
   display: flex;
   flex-direction: column;
   height: 100%;
-  background-image: url("/static/images/intro-bg.jpg"); 
+  /* background: #545c64;  */
 }
 
 .wrapper2 {
   display: flex;
   flex-direction: column;
   height: 100%;
-  background: #545c64; 
+  background-image: url("/static/images/intro-bg.jpg"); 
 }
 
 .header {
   flex: 0 0 auto;
+  background: #545c64; 
 }
 .middle {
   flex: 1 1 auto;

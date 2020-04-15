@@ -50,10 +50,6 @@ export default {
           path: "/mAbout/mProductDetails2"
         },
         {
-          title: "创始团队",
-          path: "/mAbout/mCreateTeam"
-        },
-        {
           title: "公众号",
           path: ""
         }

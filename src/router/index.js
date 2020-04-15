@@ -94,26 +94,9 @@ export default new Router({
       path: '/mJoin',
       name: '加我我们',
       component: mJoin,
-      redirect: '/mJoin/mInterview',
       meta: {
         title: '加我我们'
-      },
-      children: [
-        {
-          path: 'mInterview',
-          component: mInterview,
-          meta: {
-            title: '加入我们'
-          }
-        },
-        {
-          path: 'mInterview2',
-          component: mContact,
-          meta: {
-            title: '加入我们'
-          },
-        },
-      ]
+      }
     },
 
 

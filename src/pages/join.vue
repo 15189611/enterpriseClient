@@ -1,40 +1,37 @@
 <template>
   <div class="join-parent">
-
+    <div class="join-content">
     <el-container>
       <el-aside class="aside" style="width:400px;">
-    
-          <el-menu
-            :default-active="path"
-            background-color="transparent"
-            class="el-menu-vertical-demo"
-            text-color="#ffffff"
-            active-text-color="#1f86ed"
-            :default-openeds="openeds"
-             :router="true"
-          >
-            <el-submenu index="1">
-              <template slot="title">
-                <span class="title">关于我们</span>
+        <el-menu
+          :default-active="path"
+          background-color="transparent"
+          class="el-menu-vertical-demo"
+          text-color="#ffffff"
+          active-text-color="#1f86ed"
+          :default-openeds="openeds"
+          :router="false"
+        >
+          <el-submenu index="1">
+            <template slot="title">
+              <span class="title">关于我们</span>
+            </template>
+            <el-menu-item-group>
+              <template v-for="(item,index) in arrayData">
+                <el-menu-item
+                  :index="item.index"
+                  :key="index"
+                  @click="handleClick(index)"
+                >{{item.title}}</el-menu-item>
               </template>
-              <el-menu-item-group>
-                <el-menu-item index="/mJoin/mInterview">· 软件工程师高级别</el-menu-item>
-                <el-menu-item index="/mJoin/mInterview2">· 硬件工程师高级别</el-menu-item>
-                <el-menu-item index="/mJoin/3">· android工程师高级别</el-menu-item>
-                <el-menu-item index="/mJoin/4">· 算法工程师高级别</el-menu-item>
-                <el-menu-item index="/mJoin/5">· ios工程师高级别</el-menu-item>
-              </el-menu-item-group>
-            </el-submenu>
-
-          </el-menu>
- 
-
+            </el-menu-item-group>
+          </el-submenu>
+        </el-menu>
       </el-aside>
 
       <el-main class="el-main">
-        <router-view></router-view>
+        <div>{{des}}</div>
       </el-main>
-
     </el-container>
 
     <!-- <div class="upload-parent">
@@ -64,6 +61,8 @@
         <div slot="tip" class="el-upload__tip">上传你的简历，且不超过500kb</div>
       </el-upload>
     </div>-->
+
+    </div>
   </div>
 </template>
 
@@ -76,8 +75,41 @@ export default {
       //http://47.101.52.36:8080/enterprise/upload/test.do
       fileList: [],
       url: "/enterprise/upload/test.do",
-      path : '',
-      openeds : ['1']
+      path: "",
+      openeds: ["1"],
+      des: "",
+      arrayData: [
+        {
+          index: "1",
+          title: "· 软件工程师高级别",
+          des: "对应工程描述1"
+        },
+        {
+          index: "2",
+          title: "· ios工程师高级别",
+          des: "对应工程描述2"
+        },
+        {
+          index: "3",
+          title: "· android工程师高级别",
+          des: "对应工程描述3"
+        },
+        {
+          index: "4",
+          title: "· 算法工程师高级别",
+          des: "对应工程描述4"
+        },
+        {
+          index: "5",
+          title: "· AI工程师高级别",
+          des: "对应工程描述5"
+        },
+        {
+          index: "6",
+          title: "· 视频工程师高级别",
+          des: "对应工程描述6"
+        }
+      ]
     };
   },
   methods: {
@@ -124,10 +156,63 @@ export default {
     handerChange(file, fileList) {
       console.log("change==" + file);
     },
+    testGet() {
+      axios
+        .get("/enterprise/hello/test.do")
+        .then(res => {
+          console.log(res.data);
+          this.arrayData = [
+            {
+              index: "1",
+              title: "· 软件工程师高级别",
+              des: "对应工程描述1"
+            },
+            {
+              index: "2",
+              title: "· ios工程师高级别",
+              des: "对应工程描述2"
+            },
+            {
+              index: "3",
+              title: "· android工程师高级别",
+              des: "对应工程描述3"
+            },
+            {
+              index: "4",
+              title: "· 算法工程师高级别",
+              des: "对应工程描述4"
+            },
+            {
+              index: "5",
+              title: "· AI工程师高级别",
+              des: "对应工程描述5"
+            },
+            {
+              index: "6",
+              title: "· 视频工程师高级别",
+              des: "对应工程描述6"
+            }
+          ];
+          this.path = this.arrayData[0].index; 
+          this.des =  this.arrayData[0].des;
+        })
+        .catch(err => {
+          console.log(err);
+        });
+    },
     onRouteChanged() {
       let that = this;
-      that.path = that.$route.path;
-      console.log("charles2"+ that.path)
+      // that.path = that.$route.path;
+      console.log("charles2" + that.path);
+      if(that.arrayData != null && that.arrayData.length > 0){
+        that.path = that.arrayData[0].index;
+        that.des = that.arrayData[0].des;
+      }
+    },
+    handleClick(index) {
+      let that = this;
+      console.log("select==" + index);
+      that.des = that.arrayData[index].des;
     }
   },
   watch: {
@@ -135,6 +220,9 @@ export default {
       immediate: true,
       handler: "onRouteChanged"
     }
+  },
+  mounted() {
+    //this.testGet();
   }
 };
 </script>
@@ -144,49 +232,56 @@ export default {
 .join-parent {
   background: #545c64;
   display: flex;
-  
+  justify-content: center;
 }
+.join-content{
+  display: flex;
+  max-width: 1200px;
+  width: 1200px;
+}
+
 .aside {
   margin-top: 20px;
-     overflow-x:hidden;
+  overflow-x: hidden;
 }
 
 .el-menu-vertical-demo {
   border-right-color: transparent !important;
-  position: relative;
-  left: 50%;
+  // position: relative;
+  // left: 0%;
 }
-
-.el-menu-item:focus, .el-menu-item:hover{
-   background-color: transparent !important;
+.el-menu-item:focus,
+.el-menu-item:hover {
+  background-color: transparent !important;
 }
-.el-menu-vertical-demo /deep/ .el-submenu__title{
-   background-color: transparent !important;
-   //submenu 标题
+.el-menu-vertical-demo /deep/ .el-submenu__title {
+  background-color: transparent !important;
+  //submenu 标题
 }
-.el-menu-vertical-demo /deep/ .el-menu-item{
+.el-menu-vertical-demo /deep/ .el-menu-item {
   //控制group item
-
 }
 
-.el-menu-vertical-demo /deep/ .el-submenu__icon-arrow{
+.el-menu-vertical-demo /deep/ .el-submenu__icon-arrow {
   display: none;
 }
 
-.title{
+.title {
   color: #1f86ed;
 }
 .title::before {
-    content: "";
-    position: absolute;
-    bottom: 0px;
-    top: auto;
-    left: auto;
-    height: 1px;
-    width: 22px;
-    background-color: #1f86ed;
+  content: "";
+  position: absolute;
+  bottom: 0px;
+  top: auto;
+  left: auto;
+  height: 1px;
+  width: 22px;
+  background-color: #1f86ed;
 }
+.el-main{
 
+}
 .upload-parent {
   display: flex;
   justify-content: center;

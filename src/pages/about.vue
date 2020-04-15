@@ -43,15 +43,15 @@ export default {
         },
         {
           title: "愿景",
-          path: "/mAbout/mProductDetails"
+          path: "/mAbout/mAboutVision"
         },
         {
           title: "目标",
-          path: "/mAbout/mProductDetails2"
+          path: "/mAbout/mAboutGoals"
         },
         {
           title: "公众号",
-          path: ""
+          path: "/mAbout/mAboutNumber"
         }
       ]
     };

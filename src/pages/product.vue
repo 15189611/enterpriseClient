@@ -13,6 +13,7 @@
             :default-openeds="openeds"
             @open="openMenu"
             @close="closeMenu"
+            @select="handleSelect"
           >
             <template v-for="(item, index) in nav_menu_data">
    
@@ -59,10 +60,14 @@ export default {
       subMenuPath : "",
       openeds:[],
       nav_menu_data: [
-        {
-          title: "导火线",
-          path: "8",
-        },
+        // {
+        //   title: "无法理解",
+        //   path: "9",
+        // },
+        // {
+        //   title: "导火线",
+        //   path: "8",
+        // },
         {
           title: "芯片",
           path: "1",
@@ -127,6 +132,9 @@ export default {
     };
   },
   methods: {
+    handleSelect(index,indexPath){
+        console.log("handleSelect=="+ index  + ",,,indexPath=="+ indexPath)
+    },
     openMenu(index,indexPath){
       //this.path = index;
        console.log("openMenu=="+ index  + ",,,indexPath=="+ indexPath)
@@ -146,11 +154,11 @@ export default {
     onRouteChanged() {
       let that = this;
       if(that.nav_menu_data != null && that.nav_menu_data.length > 0){
-        that.path = that.nav_menu_data[0].path;
+        // that.path = that.nav_menu_data[0].path;
         if(that.nav_menu_data[0].arrayData && that.nav_menu_data[0].arrayData.length > 0){
-            that.openeds[0] = element.path;
+            that.openeds[0] = that.nav_menu_data[0].path;
+            that.path = that.nav_menu_data[0].arrayData[0].index;
         }
-
       }
     },
   },

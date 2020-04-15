@@ -9,8 +9,12 @@ import mContact from '@/pages/contact'
 import mJoin from '@/pages/join'
 
 
-import mProductDetails from '@/pages/product_details'
 import mAboutSelf from '@/pages/about_self'
+import mAboutVision from '@/pages/about_vision'
+import mAboutGoals from '@/pages/about_goals'
+import mAboutNumber from '@/pages/about_number'
+
+import mProductDetails from '@/pages/product_details'
 import mCreateTeam from '@/pages/create-team'
 import mInterview from '@/pages/interview'
 
@@ -45,20 +49,6 @@ export default new Router({
       redirect: '/mAbout/mAboutSelf',
       children: [
         {
-          path: 'mProductDetails',
-          component: mProductDetails,
-          meta: {
-            title: '关于我们'
-          },
-        },
-        {
-          path: 'mProductDetails2',
-          component: mProduct,
-          meta: {
-            title: '关于我们'
-          },
-        },
-        {
           path: 'mAboutSelf',
           component: mAboutSelf,
           meta: {
@@ -66,8 +56,22 @@ export default new Router({
           },
         },
         {
-          path: 'mCreateTeam',
-          component: mCreateTeam,
+          path: 'mAboutVision',
+          component: mAboutVision,
+          meta: {
+            title: '关于我们'
+          },
+        },
+        {
+          path: 'mAboutGoals',
+          component: mAboutGoals,
+          meta: {
+            title: '关于我们'
+          },
+        },
+        {
+          path: 'mAboutNumber',
+          component: mAboutNumber,
           meta: {
             title: '关于我们'
           },

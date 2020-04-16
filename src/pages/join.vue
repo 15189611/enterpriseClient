@@ -1,41 +1,42 @@
 <template>
   <div class="join-parent">
     <div class="join-content">
-    <el-container>
-      <el-aside class="aside" style="width:400px;">
-        <el-menu
-          :default-active="path"
-          background-color="transparent"
-          class="el-menu-vertical-demo"
-          text-color="#ffffff"
-          active-text-color="#1f86ed"
-          :default-openeds="openeds"
-          :router="false"
-        >
-          <el-submenu index="1">
-            <template slot="title">
-              <span class="title">关于我们</span>
-            </template>
-            <el-menu-item-group>
-              <template v-for="(item,index) in arrayData">
-                <el-menu-item
-                  :index="item.index"
-                  :key="index"
-                  @click="handleClick(index)"
-                >{{item.title}}</el-menu-item>
+      <el-container>
+        <el-aside class="aside" style="width:400px;">
+          <el-menu
+            :default-active="path"
+            background-color="transparent"
+            class="el-menu-vertical-demo"
+            text-color="#ffffff"
+            active-text-color="#1f86ed"
+            :default-openeds="openeds"
+            :router="false"
+          >
+            <el-submenu index="1">
+              <template slot="title">
+                <span class="title">关于我们</span>
               </template>
-            </el-menu-item-group>
-          </el-submenu>
-        </el-menu>
-      </el-aside>
+              <el-menu-item-group>
+                <template v-for="(item,index) in arrayData">
+                  <el-menu-item
+                    :index="item.index"
+                    :key="index"
+                    @click="handleClick(item.index)"
+                  >{{item.title}}</el-menu-item>
+                </template>
+              </el-menu-item-group>
+            </el-submenu>
+          </el-menu>
 
-      <el-main class="el-main">
-        <!-- <div>{{des}}</div> -->
-        <router-view  :searchVal="searchVal" /> 
-      </el-main>
-    </el-container>
+        </el-aside>
 
-    <!-- <div class="upload-parent">
+        <el-main class="el-main">
+          <!-- <div>{{des}}</div> -->
+          <router-view />
+        </el-main>
+      </el-container>
+
+      <!-- <div class="upload-parent">
       <el-upload
         class="upload-demo"
         ref="upload"
@@ -61,8 +62,7 @@
         >上传到服务器</el-button>
         <div slot="tip" class="el-upload__tip">上传你的简历，且不超过500kb</div>
       </el-upload>
-    </div>-->
-
+      </div>-->
     </div>
   </div>
 </template>
@@ -70,9 +70,9 @@
 <script>
 import axios from "axios";
 import Vue from "vue";
-import Router from 'vue-router'
-import router from '../router/index'
-import mProductDetails from '@/pages/product_details'
+import Router from "vue-router";
+import router from "../router/index";
+import mProductDetails from "@/pages/product_details";
 
 export default {
   data() {
@@ -80,8 +80,7 @@ export default {
       //http://47.101.52.36:8080/enterprise/upload/test.do
       fileList: [],
       url: "/enterprise/upload/test.do",
-      searchVal : '',
-      path: "1",
+      path: "",
       openeds: ["1"],
       des: "",
       arrayData: [
@@ -199,8 +198,8 @@ export default {
               des: "对应工程描述6"
             }
           ];
-          this.path = this.arrayData[0].index; 
-          this.des =  this.arrayData[0].des;
+          this.path = this.arrayData[0].index;
+          this.des = this.arrayData[0].des;
         })
         .catch(err => {
           console.log(err);
@@ -208,17 +207,11 @@ export default {
     },
     onRouteChanged() {
       let that = this;
-      that.searchVal = that.arrayData[0].index;
-      // that.path = that.$route.path;
       console.log("charles22222" + that.$route.path);
-      // that.arrayData.forEach(element => {
-      //     element.path =  "/mJoin/mProductDetails";
-      // });
 
+      //不用路由
       // if(that.arrayData != null && that.arrayData.length > 0){
       //   //that.path = that.arrayData[0].index;
-      //   console.log("000000"+ that.arrayData[0].path)
-      //   that.path = that.arrayData[0].path;
       //   that.des = that.arrayData[0].des;
       // }
     },
@@ -226,12 +219,11 @@ export default {
       let that = this;
       console.log("select==" + index);
       that.$router.push({
-         path: `/mJoin/mProductDetails`,
-          query: {
-              id:index,
-          }
+        path: `/mJoin/mProductDetails`,
+        query: {
+          id: index
         }
-      );
+      });
     }
   },
   watch: {
@@ -242,36 +234,49 @@ export default {
   },
   mounted() {
     // this.testGet();
-    //console.log(this.router.options.routes, 'before')
-    // var demo = []
-    router.options.routes.map(item => {
-      if(item.path === '/mJoin'){
-        console.log(item)
-       // item['children'] = this.arrayData
-       console.log(item.path + "/"+item.children[0].path)
-      }
-    })
+    var that  = this;
+    var href = window.location.href;
+    href  = href.split("/mJoin/mProductDetails?id=")[1];
+    console.log("charlesh---->===",href);
+    if(href == 'undefined' || href == null){
+      that.path = that.arrayData[0].index
+      that.$router.push({
+        path: `/mJoin/mProductDetails`,
+        query: {
+          id: that.arrayData[0].index
+        }
+      });
+    }else{
+        that.path = href
+    }
+
+    // router.options.routes.map(item => {
+    //   if(item.path === '/mJoin'){
+    //     console.log(item)
+    //    // item['children'] = this.arrayData
+    //    console.log(item.path + "/"+item.children[0].path)
+    //   }
+    // })
     // console.log(router.options.routes, 'after')
     // Vue.use(new Router(router.options.routes))
   },
-  beforeRouteEnter (to, from, next) {
-      // 在渲染该组件的对应路由被 confirm 前调用
-      // 不！能！获取组件实例 `this`
-      // 因为当守卫执行前，组件实例还没被创建
-      console.log("charles--->",to);
-      console.log("charles--->",to.path)
-      next()
-    },
-    beforeRouteUpdate (to, from, next) {
+  beforeRouteEnter(to, from, next) {
+    // 在渲染该组件的对应路由被 confirm 前调用
+    // 不！能！获取组件实例 `this`
+    // 因为当守卫执行前，组件实例还没被创建
+    console.log("charlesBefore--->", to);
+    console.log("charlesBefore--->", to.path);
+    next();
+  },
+  beforeRouteUpdate(to, from, next) {
     // 在当前路由改变，但是该组件被复用时调用
     // 举例来说，对于一个带有动态参数的路径 /foo/:id，在 /foo/1 和 /foo/2 之间跳转的时候，
     // 由于会渲染同样的 Foo 组件，因此组件实例会被复用。而这个钩子就会在这个情况下被调用。
     // 可以访问组件实例 `this`
-
-    console.log("charlesUpdate--->",to);
-    console.log("charlesUpdate--->",to.path)
-    next()
-  },
+    console.log("charlesUpdate--->", to);
+    console.log("charlesUpdate--->", to.path);
+    next();
+  }
 };
 </script>
 
@@ -282,7 +287,7 @@ export default {
   display: flex;
   justify-content: center;
 }
-.join-content{
+.join-content {
   display: flex;
   max-width: 1200px;
   width: 1200px;
@@ -327,8 +332,7 @@ export default {
   width: 22px;
   background-color: #1f86ed;
 }
-.el-main{
-
+.el-main {
 }
 .upload-parent {
   display: flex;

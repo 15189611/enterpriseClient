@@ -115,7 +115,6 @@ export default new Router({
           path: 'mProductDetails',
           name: '产品想我',
           component: mProductDetails,
-          props : true,
           meta: {
             title: '产品想我'
           }

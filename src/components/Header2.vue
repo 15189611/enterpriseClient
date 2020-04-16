@@ -9,25 +9,8 @@
       <div class="logo-text" v-if="showLogoText">最终前沿</div>
       <!-- background-color="#545c64" -->
 
-      <div class="tab">
-        <el-menu
-          :default-active="path"
-          class="el-menu-demo"
-          mode="horizontal"
-          @select="handleSelect"
-          background-color="transparent"
-          text-color="#ffffff"
-          active-text-color="#1f86ed"
-          :router="isRouter"
-        >
-          <el-menu-item index="/mHome" class="el-menu-child">首页</el-menu-item>
-          <el-menu-item index="/mProduct" class="el-menu-child">产品</el-menu-item>
-          <el-menu-item index="/mAbout/mAboutSelf" class="el-menu-child">关于我们</el-menu-item>
-          <el-menu-item index="/mNewsaction" class="el-menu-child">最新动向</el-menu-item>
-          <el-menu-item index="/mContact" class="el-menu-child">联系我们</el-menu-item>
-          <el-menu-item index="/mJoin/mProductDetails" class="el-menu-child">加入我们</el-menu-item>
-        </el-menu>
-      </div>
+      <router-link to="/mHome">Go to mHome</router-link>
+      <router-link to="/mJoin">Go to mJoin</router-link>
     </div>
   </div>
 </template>

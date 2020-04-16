@@ -38,9 +38,17 @@ export default new Router({
       path: '/mProduct',
       name: '产品中心',
       component: mProduct,
+      // redirect: '/mProduct/mInterview',
       meta: {
         title: '产品中心'
-      }
+      },
+      children: [
+        {
+          path: '/mProduct/mInterview/:id',
+          component: mInterview, 
+          props: true
+        },
+      ]
     },
     {
       path: '/mAbout',
@@ -92,17 +100,28 @@ export default new Router({
       component: mContact,
       meta: {
         title: '联系我们'
-      },
+      }
     },
     {
       path: '/mJoin',
       name: '加我我们',
       component: mJoin,
+      redirect : '/mJoin/mProductDetails',
       meta: {
         title: '加我我们'
-      }
+      },
+      children : [
+        {
+          path: 'mProductDetails',
+          name: '产品想我',
+          component: mProductDetails,
+          props : true,
+          meta: {
+            title: '产品想我'
+          }
+        }
+      ]
     },
-
 
 
 

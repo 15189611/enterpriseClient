@@ -31,6 +31,7 @@
 
 <script>
 export default {
+  props:['searchVal'],
   data() {
     return {
       reverse: false,
@@ -69,6 +70,9 @@ export default {
     $route: {
       immediate: true,
       handler: "onRouteChanged"
+    },
+    searchVal: function (val) {       
+       console.log('charles收到'+val);   // 接收父组件的值
     }
   }
 };

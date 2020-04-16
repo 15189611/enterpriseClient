@@ -2,36 +2,14 @@
   <div class="join-parent">
     <div class="join-content">
     <el-container>
-      <el-aside class="aside" style="width:400px;">
-        <el-menu
-          :default-active="path"
-          background-color="transparent"
-          class="el-menu-vertical-demo"
-          text-color="#ffffff"
-          active-text-color="#1f86ed"
-          :default-openeds="openeds"
-          :router="false"
-        >
-          <el-submenu index="1">
-            <template slot="title">
-              <span class="title">关于我们</span>
-            </template>
-            <el-menu-item-group>
-              <template v-for="(item,index) in arrayData">
-                <el-menu-item
-                  :index="item.index"
-                  :key="index"
-                  @click="handleClick(index)"
-                >{{item.title}}</el-menu-item>
-              </template>
-            </el-menu-item-group>
-          </el-submenu>
-        </el-menu>
-      </el-aside>
+
+      <router-link v-for="item in arrayData" :key="item.id" :to="item.path">{{item.name}}</router-link>
+      <router-link to="/mJoin/mProductDetails">2</router-link>
 
       <el-main class="el-main">
         <!-- <div>{{des}}</div> -->
-        <router-view  :searchVal="searchVal" /> 
+        ddddddd
+        <router-view /> 
       </el-main>
     </el-container>
 
@@ -80,40 +58,25 @@ export default {
       //http://47.101.52.36:8080/enterprise/upload/test.do
       fileList: [],
       url: "/enterprise/upload/test.do",
-      searchVal : '',
-      path: "1",
+      path: "",
       openeds: ["1"],
       des: "",
       arrayData: [
         {
+          
+          path: '/mJoin/mProductDetails',
           index: "1",
+          name: '首页',
+          params: {},
+          component: mProductDetails,
           title: "· 软件工程师高级别",
           des: "对应工程描述1"
         },
         {
           index: "2",
           title: "· ios工程师高级别",
-          des: "对应工程描述2"
-        },
-        {
-          index: "3",
-          title: "· android工程师高级别",
-          des: "对应工程描述3"
-        },
-        {
-          index: "4",
-          title: "· 算法工程师高级别",
-          des: "对应工程描述4"
-        },
-        {
-          index: "5",
-          title: "· AI工程师高级别",
-          des: "对应工程描述5"
-        },
-        {
-          index: "6",
-          title: "· 视频工程师高级别",
-          des: "对应工程描述6"
+          des: "对应工程描述2",
+          path: '/mJoin/mProductDetails2',
         }
       ]
     };
@@ -208,9 +171,9 @@ export default {
     },
     onRouteChanged() {
       let that = this;
-      that.searchVal = that.arrayData[0].index;
-      // that.path = that.$route.path;
-      console.log("charles22222" + that.$route.path);
+      that.path = that.$route.path;
+       // mJoin
+      console.log("charles2" + that.$route.path);
       // that.arrayData.forEach(element => {
       //     element.path =  "/mJoin/mProductDetails";
       // });
@@ -225,13 +188,16 @@ export default {
     handleClick(index) {
       let that = this;
       console.log("select==" + index);
-      that.$router.push({
-         path: `/mJoin/mProductDetails`,
-          query: {
-              id:index,
-          }
-        }
-      );
+      // that.path = that.arrayData[index].index;
+      // that.des = that.arrayData[index].des;
+    console.log("------>"+ that.arrayData[index].path)
+    //  that.path = that.arrayData[index].path;
+
+      // that.$router.push({
+      //    path: `/mJoin/mProductDetails/${index}`,
+      //   }
+      // );
+
     }
   },
   watch: {
@@ -241,37 +207,21 @@ export default {
     }
   },
   mounted() {
-    // this.testGet();
-    //console.log(this.router.options.routes, 'before')
+    this.testGet();
+    console.log(this.$router.options.routes, 'before')
     // var demo = []
-    router.options.routes.map(item => {
+    this.$router.options.routes.map(item => {
       if(item.path === '/mJoin'){
-        console.log(item)
-       // item['children'] = this.arrayData
-       console.log(item.path + "/"+item.children[0].path)
+        console.log(item, 'add')
+        item['children'] = this.arrayData
       }
     })
     // console.log(router.options.routes, 'after')
     // Vue.use(new Router(router.options.routes))
-  },
-  beforeRouteEnter (to, from, next) {
-      // 在渲染该组件的对应路由被 confirm 前调用
-      // 不！能！获取组件实例 `this`
-      // 因为当守卫执行前，组件实例还没被创建
-      console.log("charles--->",to);
-      console.log("charles--->",to.path)
-      next()
-    },
-    beforeRouteUpdate (to, from, next) {
-    // 在当前路由改变，但是该组件被复用时调用
-    // 举例来说，对于一个带有动态参数的路径 /foo/:id，在 /foo/1 和 /foo/2 之间跳转的时候，
-    // 由于会渲染同样的 Foo 组件，因此组件实例会被复用。而这个钩子就会在这个情况下被调用。
-    // 可以访问组件实例 `this`
 
-    console.log("charlesUpdate--->",to);
-    console.log("charlesUpdate--->",to.path)
-    next()
-  },
+    this.$router.addRoutes(this.$router.options.routes)
+
+  }
 };
 </script>
 

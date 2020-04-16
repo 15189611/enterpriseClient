@@ -1,6 +1,7 @@
 <template>
   <div class="contact-parent">
     <el-button slot="trigger" size="small" type="primary" @click="downFile(imgurl)">下载模板</el-button>
+    <div @click="test(3)">测试路由带参数</div>
   </div>
 </template>
 
@@ -71,6 +72,11 @@ export default {
         .catch(err => {
           console.log(err);
         });
+    },
+    test(index ){
+        this.$router.push({
+         path: `/mProductDetails/${index}`,
+        } );
     }
   }
 };

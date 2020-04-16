@@ -1,6 +1,7 @@
 <template>
   <div class="interview-parent">
-     软件工程师1
+    挺甜账户
+     {{ this.$route.params.id }}
   </div>
 </template>
 
@@ -21,7 +22,7 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .interview-parent {
-   color: white;
+   color: red;
    text-align: center;
 }
 </style>

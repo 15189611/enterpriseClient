@@ -14,6 +14,7 @@
             @open="openMenu"
             @close="closeMenu"
             @select="handleSelect"
+            :isRouter="true"
           >
             <template v-for="(item, index) in nav_menu_data">
    
@@ -45,7 +46,7 @@
       </el-aside>
 
       <el-main class="el-main">
-        <!-- <router-view /> -->
+        <router-view />
       </el-main>
     </el-container>
   </div>
@@ -133,31 +134,34 @@ export default {
   },
   methods: {
     handleSelect(index,indexPath){
-        console.log("handleSelect=="+ index  + ",,,indexPath=="+ indexPath)
+        //console.log("handleSelect=="+ index  + ",,,indexPath=="+ indexPath)
     },
     openMenu(index,indexPath){
       //this.path = index;
-       console.log("openMenu=="+ index  + ",,,indexPath=="+ indexPath)
+       //console.log("openMenu=="+ index  + ",,,indexPath=="+ indexPath)
     },
     closeMenu(index,indexPath){
      // this.path = index;
-      console.log("closeMenu=="+ index  + ",,,indexPath=="+ indexPath)
+     // console.log("closeMenu=="+ index  + ",,,indexPath=="+ indexPath)
     },
     handleTab(index){
-      console.log("父下标=="+index)
-      this.path = this.nav_menu_data[index].path;
+      this.path =  this.nav_menu_data[index].path;
+      console.log("父下标=="+"/mProduct/mInterview/" + this.nav_menu_data[index].path)
     },
     handleGroupClick(parentIndex,ChildIndex){
       this.path = this.nav_menu_data[parentIndex].arrayData[ChildIndex].index;
-      console.log("父下标=="+parentIndex + "子下标=="+  ChildIndex)
+      console.log("父下标=="+parentIndex + "子下标=="+  "/mProduct/mInterview/"+ this.nav_menu_data[parentIndex].arrayData[ChildIndex].index)
     },
     onRouteChanged() {
       let that = this;
+      console.log("路由=="+ that.$route.path)
+      that.path = that.$route.path;
       if(that.nav_menu_data != null && that.nav_menu_data.length > 0){
         // that.path = that.nav_menu_data[0].path;
         if(that.nav_menu_data[0].arrayData && that.nav_menu_data[0].arrayData.length > 0){
             that.openeds[0] = that.nav_menu_data[0].path;
             that.path = that.nav_menu_data[0].arrayData[0].index;
+            console.log("第一次" +  "/mProduct/mInterview/"+ that.nav_menu_data[0].arrayData[0].index)
         }
       }
     },

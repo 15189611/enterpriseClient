@@ -72,7 +72,7 @@ export default {
   display: flex;
   flex-direction: column;
   height: 100%;
-  /* background: #545c64;  */
+  /* background: #292929;  */
 }
 
 .wrapper2 {
@@ -84,7 +84,7 @@ export default {
 
 .header {
   flex: 0 0 auto;
-  background: #545c64; 
+  background: #292929; 
 }
 .middle {
   flex: 1 1 auto;

@@ -106,15 +106,20 @@ export default new Router({
       path: '/mJoin',
       name: '加我我们',
       component: mJoin,
-      redirect : '/mJoin/mProductDetails',
+      redirect : '/mJoin/mInterview',
       meta: {
         title: '加我我们'
       },
       children : [
         {
-          path: 'mProductDetails',
+          path: 'mInterview',
           name: '产品想我',
-          component: mProductDetails,
+          component: mInterview,
+          props: function (route) {
+            return { 
+              id: route.query.id 
+            };
+          },
           meta: {
             title: '产品想我'
           }

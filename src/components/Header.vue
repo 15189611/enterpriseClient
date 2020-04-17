@@ -25,7 +25,7 @@
           <el-menu-item index="/mAbout/mAboutSelf" class="el-menu-child">关于我们</el-menu-item>
           <el-menu-item index="/mNewsaction" class="el-menu-child">最新动向</el-menu-item>
           <el-menu-item index="/mContact" class="el-menu-child">联系我们</el-menu-item>
-          <el-menu-item index="/mJoin/mProductDetails" class="el-menu-child">加入我们</el-menu-item>
+          <el-menu-item index="/mJoin/mInterview" class="el-menu-child">加入我们</el-menu-item>
         </el-menu>
       </div>
     </div>

@@ -2,7 +2,7 @@
   <div class="join-parent">
     <div class="join-content">
       <el-container>
-        <el-aside class="aside" style="width:400px;">
+        <el-aside class="aside" style="width:300px;">
           <el-menu
             :default-active="path"
             background-color="transparent"
@@ -35,34 +35,6 @@
           <router-view />
         </el-main>
       </el-container>
-
-      <!-- <div class="upload-parent">
-      <el-upload
-        class="upload-demo"
-        ref="upload"
-        accept=".jpg, .jpeg, .png, .gif, .bmp, .pdf, .JPG, .JPEG, .PBG, .GIF, .BMP, .PDF"
-        :action="url"
-        :file-list="fileList"
-        :auto-upload="false"
-        :limit="1"
-        multiple
-        :on-preview="handlePreview"
-        :on-remove="handleRemove"
-        :on-success="handleSuccess"
-        :on-error="handleError"
-        :on-change="handerChange"
-        :before-upload="handerBeforUpload"
-      >
-        <el-button slot="trigger" size="small" type="primary">选取文件</el-button>
-        <el-button
-          style="margin-left: 10px;"
-          size="small"
-          type="success"
-          @click="submitUpload"
-        >上传到服务器</el-button>
-        <div slot="tip" class="el-upload__tip">上传你的简历，且不超过500kb</div>
-      </el-upload>
-      </div>-->
     </div>
   </div>
 </template>
@@ -77,9 +49,6 @@ import mProductDetails from "@/pages/product_details";
 export default {
   data() {
     return {
-      //http://47.101.52.36:8080/enterprise/upload/test.do
-      fileList: [],
-      url: "/enterprise/upload/test.do",
       path: "",
       openeds: ["1"],
       des: "",
@@ -207,8 +176,7 @@ export default {
     },
     onRouteChanged() {
       let that = this;
-      console.log("charles22222" + that.$route.path);
-
+      console.log("onRouteChanged" + that.$route.path);
       //不用路由
       // if(that.arrayData != null && that.arrayData.length > 0){
       //   //that.path = that.arrayData[0].index;
@@ -219,10 +187,12 @@ export default {
       let that = this;
       console.log("select==" + index);
       that.$router.push({
-        path: `/mJoin/mProductDetails`,
+        path: `/mJoin/mInterview`,
         query: {
           id: index
         }
+      }).catch(err =>{
+        
       });
     }
   },
@@ -236,12 +206,11 @@ export default {
     // this.testGet();
     var that  = this;
     var href = window.location.href;
-    href  = href.split("/mJoin/mProductDetails?id=")[1];
-    console.log("charlesh---->===",href);
+    href  = href.split("/mJoin/mInterview?id=")[1];
     if(href == 'undefined' || href == null){
       that.path = that.arrayData[0].index
       that.$router.push({
-        path: `/mJoin/mProductDetails`,
+        path: `/mJoin/mInterview`,
         query: {
           id: that.arrayData[0].index
         }
@@ -260,23 +229,6 @@ export default {
     // console.log(router.options.routes, 'after')
     // Vue.use(new Router(router.options.routes))
   },
-  beforeRouteEnter(to, from, next) {
-    // 在渲染该组件的对应路由被 confirm 前调用
-    // 不！能！获取组件实例 `this`
-    // 因为当守卫执行前，组件实例还没被创建
-    console.log("charlesBefore--->", to);
-    console.log("charlesBefore--->", to.path);
-    next();
-  },
-  beforeRouteUpdate(to, from, next) {
-    // 在当前路由改变，但是该组件被复用时调用
-    // 举例来说，对于一个带有动态参数的路径 /foo/:id，在 /foo/1 和 /foo/2 之间跳转的时候，
-    // 由于会渲染同样的 Foo 组件，因此组件实例会被复用。而这个钩子就会在这个情况下被调用。
-    // 可以访问组件实例 `this`
-    console.log("charlesUpdate--->", to);
-    console.log("charlesUpdate--->", to.path);
-    next();
-  }
 };
 </script>
 
@@ -333,6 +285,7 @@ export default {
   background-color: #1f86ed;
 }
 .el-main {
+  background-color:#33FFFF;
 }
 .upload-parent {
   display: flex;

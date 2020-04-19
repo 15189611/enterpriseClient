@@ -1,13 +1,11 @@
 <template>
   <div class="product-del-parent">
-    产品详情
-    {{this.$route.query.id}}
-
-    <div >
-
-
-
+    <div class="product-del-content-parent">
+       产品详情
     </div>
+   
+    <!-- {{this.$route.query.id}} -->
+
 
       <!-- <div class="upload-parent">
       <el-upload
@@ -73,7 +71,15 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .product-del-parent {
-   color: red;
-   text-align: center;
+  background-color: #292929;
+  min-height: 750px;
+}
+.product-del-content-parent {
+  margin-top: 20px;
+  position: relative;
+  left: 50%;
+  transform: translate(-50%, 0);
+  max-width: 1200px;
+  color: white;
 }
 </style>

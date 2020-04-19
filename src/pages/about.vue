@@ -1,7 +1,8 @@
 <template>
-  <div class="about-parent">
+  <div :class="[this.showFirstBg ? 'about-parent' :'about-parent-other']">
+    <div class="about-content-parent">
     <el-container>
-      <el-aside class="aside" style="width:400px;">
+      <el-aside class="aside" style="width:300px;">
         <div class="left-title">
           <el-menu
             :default-active="path"
@@ -9,7 +10,7 @@
             background-color="transparent"
             class="el-menu-vertical-demo"
             text-color="#ffffff"
-            active-text-color="#1f86ed"
+            active-text-color="#fdbc21"
             :router="isRouter"
           >
             <template v-for="(item, index) in nav_menu_data">
@@ -26,6 +27,8 @@
         <router-view />
       </el-main>
     </el-container>
+
+    </div>
   </div>
 </template>
 
@@ -34,7 +37,7 @@ export default {
   props:['searchVal'],
   data() {
     return {
-      reverse: false,
+      showFirstBg: true,
       isRouter: true,
       path : '',
       nav_menu_data: [
@@ -64,6 +67,12 @@ export default {
     onRouteChanged() {
       let that = this;
       that.path = that.$route.path;
+      if("/mAbout/mAboutSelf" == that.$route.path){
+        that.showFirstBg = true
+      }else{
+        that.showFirstBg = false;
+      }
+
     }
   },
   watch: {
@@ -81,23 +90,41 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss" scoped>
 .about-parent {
-  background: #545c64;
-  display: flex;
+  background-repeat:no-repeat;
+  background-size: cover;
+  -moz-background-size:100% 100%;
+  background-image: url("../../static/images/about_1.jpg");
+  background-color: #292929;
+  min-height: 750px;
 }
 
-.aside {
-  color: white;
+.about-parent-other {
+  background-repeat:no-repeat;
+  background-size: cover;
+  -moz-background-size:100% 100%;
+  background-image: url("../../static/images/about_2.jpg");
+  background-color: #292929;
+  min-height: 750px;
+}
+
+.about-content-parent{
   margin-top: 20px;
+  position: relative;
+  left:50%;
+  transform:translate(-50%,0);
+  max-width: 1200px;
+}
+
+.el-aside {
+  color: white;
 }
 
 .left-title {
-  margin-top: 25px;
-  display: flex;
-  justify-content: center;
 }
 
 .title-active {
 }
+
 .title-active::before {
   content: "";
   position: absolute;
@@ -106,7 +133,7 @@ export default {
   left: auto;
   height: 1px;
   width: 22px;
-  background-color: #1f86ed;
+  background-color: #fdbc21;
 }
 .title {
 }
@@ -118,7 +145,7 @@ export default {
   left: auto;
   height: 1px;
   width: 22px;
-  background-color: white;
+  background-color: #545454;
 }
 
 .el-menu-vertical-demo {
@@ -137,6 +164,6 @@ export default {
 }
 
 .el-main {
-  text-align: center;
+  padding: 0px;
 }
 </style>

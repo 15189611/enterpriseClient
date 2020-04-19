@@ -1,6 +1,6 @@
 <template>
   <div class="join-parent">
-    <div class="join-content">
+    <div class="join-content-parent">
       <el-container>
         <el-aside class="aside" style="width:300px;">
           <el-menu
@@ -8,7 +8,7 @@
             background-color="transparent"
             class="el-menu-vertical-demo"
             text-color="#ffffff"
-            active-text-color="#1f86ed"
+            active-text-color="#fdbc21"
             :default-openeds="openeds"
             :router="false"
           >
@@ -27,7 +27,6 @@
               </el-menu-item-group>
             </el-submenu>
           </el-menu>
-
         </el-aside>
 
         <el-main class="el-main">
@@ -44,7 +43,6 @@ import axios from "axios";
 import Vue from "vue";
 import Router from "vue-router";
 import router from "../router/index";
-import mProductDetails from "@/pages/product_details";
 
 export default {
   data() {
@@ -87,49 +85,6 @@ export default {
     };
   },
   methods: {
-    submitUpload() {
-      this.$refs.upload.submit();
-    },
-    testUpload(params) {
-      const file = params.file;
-      const fileType = file.type;
-
-      console.log("type==" + fileType);
-      let fd = new FormData();
-      fd.append("file", file);
-      axios
-        .post(this.url, fd, {
-          headers: { "content-type": "multipart/form-data" }
-        })
-        .then(res => {
-          console.log(res);
-          if (res.status == "200") {
-            console.log("成功");
-            this.$refs.upload.clearFiles();
-          }
-        })
-        .catch(err => {
-          console.log(err);
-        });
-    },
-    handerBeforUpload(file) {
-      console.log("handerBeforUpload===" + file);
-    },
-    handleRemove(file, fileList) {
-      console.log("remove===" + file, fileList);
-    },
-    handlePreview(file) {
-      console.log("preview===" + file);
-    },
-    handleSuccess(response, file, fileList) {
-      console.log("success==" + response);
-    },
-    handleError(err, file, fileList) {
-      console.log("error==" + err);
-    },
-    handerChange(file, fileList) {
-      console.log("change==" + file);
-    },
     testGet() {
       axios
         .get("/enterprise/hello/test.do")
@@ -167,8 +122,16 @@ export default {
               des: "对应工程描述6"
             }
           ];
+
           this.path = this.arrayData[0].index;
-          this.des = this.arrayData[0].des;
+          this.$router
+            .push({
+              path: `/mJoin/mInterview`,
+              query: {
+                id: this.arrayData[0].index
+              }
+            })
+            .catch(err => {});
         })
         .catch(err => {
           console.log(err);
@@ -186,14 +149,14 @@ export default {
     handleClick(index) {
       let that = this;
       console.log("select==" + index);
-      that.$router.push({
-        path: `/mJoin/mInterview`,
-        query: {
-          id: index
-        }
-      }).catch(err =>{
-        
-      });
+      that.$router
+        .push({
+          path: `/mJoin/mInterview`,
+          query: {
+            id: index
+          }
+        })
+        .catch(err => {});
     }
   },
   watch: {
@@ -202,21 +165,25 @@ export default {
       handler: "onRouteChanged"
     }
   },
+  created() {
+    console.log("Created");
+  },
   mounted() {
-    // this.testGet();
-    var that  = this;
+    //this.testGet();
+    var that = this;
     var href = window.location.href;
-    href  = href.split("/mJoin/mInterview?id=")[1];
-    if(href == 'undefined' || href == null){
-      that.path = that.arrayData[0].index
+    href = href.split("/mJoin/mInterview?id=")[1];
+    console.log("mounted===" + href);
+    if (href == "undefined" || href == null) {
+      that.path = that.arrayData[0].index;
       that.$router.push({
         path: `/mJoin/mInterview`,
         query: {
           id: that.arrayData[0].index
         }
       });
-    }else{
-        that.path = href
+    } else {
+      that.path = href;
     }
 
     // router.options.routes.map(item => {
@@ -228,26 +195,27 @@ export default {
     // })
     // console.log(router.options.routes, 'after')
     // Vue.use(new Router(router.options.routes))
-  },
+  }
 };
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style  lang="scss" scoped>
 .join-parent {
-  background: #545c64;
-  display: flex;
-  justify-content: center;
+  background-color: #292929;
+    min-height: 750px;
 }
-.join-content {
-  display: flex;
+.join-content-parent {
+  margin-top: 20px;
+  position: relative;
+  left: 50%;
+  transform: translate(-50%, 0);
   max-width: 1200px;
-  width: 1200px;
 }
 
 .aside {
-  margin-top: 20px;
   overflow-x: hidden;
+  background-color: #292929;
 }
 
 .el-menu-vertical-demo {
@@ -272,7 +240,7 @@ export default {
 }
 
 .title {
-  color: #1f86ed;
+  color: #fdbc21;
 }
 .title::before {
   content: "";
@@ -282,16 +250,8 @@ export default {
   left: auto;
   height: 1px;
   width: 22px;
-  background-color: #1f86ed;
+  background-color: #fdbc21;
 }
 .el-main {
-  background-color:#33FFFF;
-}
-.upload-parent {
-  display: flex;
-  justify-content: center;
-}
-.upload-demo {
-  align-items: center;
 }
 </style>

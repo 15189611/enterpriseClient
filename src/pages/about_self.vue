@@ -42,42 +42,42 @@ export default {
         {
           time: "2015-2017年",
           content: "活动按期开始大后方收到回复大师封杀分的撒风 ",
-          color: "#1f86ed"
+          color: "#fdbc21"
         },
         {
           time: "2017年底",
           content: "通过审核",
-          color: "#1f86ed"
+          color: "#fdbc21"
         },
         {
           time: "2018-2019年",
           content: "创建成功",
-          color: "#1f86ed"
+          color: "#fdbc21"
         },
         {
           time: "2020年",
           content: "创建成功",
-          color: "#1f86ed"
+          color: "#fdbc21"
         },
         {
           time: "2021年",
           content: "创建成功",
-          color: "#1f86ed"
+          color: "#fdbc21"
         },
         {
           time: "2022年",
           content: "创建成功",
-          color: "#1f86ed"
+          color: "#fdbc21"
         },
         {
           time: "2021 - 2023年",
           content: "创建成功",
-          color: "#1f86ed"
+          color: "#fdbc21"
         },
         {
           time: "",
           content: "",
-          color: "#1f86ed"
+          color: "#fdbc21"
         }
       ]
     };
@@ -90,7 +90,6 @@ export default {
 <style  lang="scss" scoped>
 .about-self-parent {
   display: flex;
- margin-top: 50px;
 }
 
 .el-content-parent {
@@ -98,9 +97,7 @@ export default {
 }
 
 .el-content {
-  // border-left-style: solid;
-  // border-left-width: 2px;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
-  // border-left-color: #999999;
+
 }
 
 .time-line {
@@ -119,7 +116,7 @@ export default {
 }
 
 .time-line2 /deep/ .el-timeline-item__tail  {
-  border-left: 2px solid #1f86ed;
+  border-left: 2px solid #fdbc21;
 }
 
 .time-line /deep/ .el-timeline-item {
@@ -131,7 +128,7 @@ export default {
 }
 
 .time-line /deep/ .el-timeline-item__content {
-  color: #ffffff;
+  color: #fdbc21;
   text-align: right;
 }
 

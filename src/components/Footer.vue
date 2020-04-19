@@ -1,26 +1,16 @@
-<!--
- * @Description: In User Settings Edit
- * @Author: your name
- * @Date: 2019-08-20 15:48:35
- * @LastEditTime: 2019-08-21 15:59:08
- * @LastEditors: Please set LastEditors
- -->
+
 <template>
   <div class="Footer">
     <div class="tab_bom">
       <div class="company-des">
-        <div class="des-auth">CopyRight@2020</div>
-        <div class="des-backup">沪ICP备********号</div>
-        <div class="des-name">版权所有 C 2020北京前沿探索深空科技有限公司 保留所有权利</div>
+        <img class="des-img" src="../../static/images/wechat_icon.png" />
+        <div class="des-auth">Copyright ©Final Frontier 2017</div>
+        <div class="des-backup">京ICP备19042938号</div>
+        <div class="des-name">版权所有 ©2020北京前沿探索深空科技有限公司 保留所有权利</div>
       </div>
 
       <div class="company-icon">
-        <div class="icon-parent">
-          <img class="icon-img" src="../../static/images/collect_money_success.png" />
-          <img class="icon-img" src="../../static/images/collect_money_code_introduction_statistic.png" />
-          <img class="icon-img" src="../../static/images/collect_money_code_introduction_receive.png" />
-          <img class="icon-img" src="../../static/images/collect_money_code_introduction_notice.png" />
-        </div>
+        <img class="icon-img" src="../../static/images/company_logo.png" />
       </div>
     </div>
   </div>
@@ -38,45 +28,49 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss" scoped>
 .Footer {
-  width: 100%;
-  margin: 0px auto;
+  background-color: white;
 }
 
 .tab_bom {
-  width: 100%;
-  margin: 0 auto;
+  max-width: 1200px;
+  position: relative;
+  left: 50%;
+  transform: translate(-50%, 0);
   display: flex;
-  background: white;
-  justify-content: space-around;
-  padding-top: 15px;
-  padding-bottom: 15px;
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
 
 .company-des {
+  flex: 1;
   flex-direction: column;
 }
+.des-img {
+  width: 45px;
+  height: 45px;
+}
 .des-auth {
+  font-weight: 600;
+  margin-top: 15px;
   font-size: 14px;
 }
 .des-backup {
+  margin-top: 5px;
   font-size: 12px;
-  margin-top: 15px;
 }
 .des-name {
   margin-top: 5px;
   font-size: 12px;
 }
 
-.company-icon{
-  flex-direction: column;
-  
+.company-icon {
+  margin-right: 50px;
+  position: absolute;
+  bottom: 20px;
+  right: 0;
 }
-.icon-parent {
-  margin-top: 45px;
-}
-.icon-img{
-  width: 25px;
-  height: 25px;
-  margin-left: 30px;
+.icon-img {
+  width: 60px;
+  height: 60px;
 }
 </style>

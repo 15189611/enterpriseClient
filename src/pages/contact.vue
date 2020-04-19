@@ -1,8 +1,10 @@
 <template>
+
   <div class="contact-parent">
     <el-button slot="trigger" size="small" type="primary" @click="downFile(imgurl)">下载模板</el-button>
     <div @click="test(3)">测试路由带参数</div>
   </div>
+  
 </template>
 
 <script>
@@ -85,7 +87,8 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .contact-parent {
-  width: 100%;
+  background: #292929;
   text-align: center;
+    min-height: 750px;
 }
 </style>

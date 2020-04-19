@@ -2,7 +2,7 @@
 
   <div class="newsaction-parent">
 
-    <div class="newsaction-content-parent">
+    <div class="newsaction-content-parent"  v-show="this.showDetails == false ">
       <el-container>
         <el-aside class="aside" style="width:300px;">
           <el-menu
@@ -32,12 +32,15 @@
         </el-aside>
 
         <el-main class="el-main">
-          <router-view />
+          <div @click="test">测试跳转{{des}}</div>
+          <!-- <router-view /> -->
         </el-main>
       </el-container>
-
     </div>
 
+
+
+    <div v-show="this.showDetails == true ">展示详情内容</div>
 
   </div>
 </template>
@@ -49,6 +52,7 @@ export default {
       path: "",
       openeds: ["1"],
       des: "",
+      showDetails : false,
       arrayData: [
         {
           index: "1",
@@ -115,55 +119,13 @@ export default {
   },
   methods: {
     handleClick(index){
-      this.path = this.arrayData[index].index;
-      this.$router
-        .push({
-          path: `/mNewsaction/mNewsActionInfo`,
-          query: {
-            id: this.arrayData[index].index,
-            type: "info"
-          }
-        })
-        .catch(err => {});
+      console.log("点击事件=="+index);
+      //调取接口展示右边数据
+      this.des = this.arrayData[index].des;
     },
-    onRouteChanged(){
-      console.log("内部组件-->newsaction="+ this.$route.path)
+    test(){
+      this. showDetails = true;
     }
-  },
-  watch: {
-    $route: {
-      immediate: true,
-      handler: "onRouteChanged"
-    }
-  },
-  created() {
-    console.log("Created");
-  },
-  mounted() {
-    //this.testGet();  //正式用
-     console.log("mounted");
-
-      var that = this;
-      var href = window.location.href;
-      href = href.split("/mNewsaction/mNewsActionInfo?id=")[1];
-      console.log("mounted===" + href);
-      if (href != null) {
-        href = href.split("&")[0];
-        console.log("mounted第二次--->" + href);
-      }
-      if (href == "undefined" || href == null) {
-        that.path = that.arrayData[0].index;
-        that.$router.push({
-          path: `/mNewsaction/mNewsActionInfo`,
-          query: {
-            id: that.arrayData[0].index,
-            type: "info"
-          }
-        });
-      } else {
-        that.path = href;
-      }
-
   }
 };
 </script>
@@ -222,7 +184,6 @@ export default {
   background-color: #fdbc21;
 }
 .el-main {
-  padding: 0px;
 }
 
 </style>

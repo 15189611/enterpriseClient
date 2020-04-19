@@ -14,9 +14,13 @@ import mAboutVision from '@/pages/about_vision'
 import mAboutGoals from '@/pages/about_goals'
 import mAboutNumber from '@/pages/about_number'
 
-import mProductDetails from '@/pages/product_details'
+
 import mCreateTeam from '@/pages/create-team'
+import mProductDetails from '@/pages/product_details'
+
 import mInterview from '@/pages/interview'
+import mProductInfo from '@/pages/product_info'
+import mNewsActionInfo from '@/pages/newsaction_info'
 
 Vue.use(Router)
 
@@ -38,16 +42,25 @@ export default new Router({
       path: '/mProduct',
       name: '产品中心',
       component: mProduct,
-      // redirect: '/mProduct/mInterview',
+      redirect: '/mProduct/mProductInfo',
       meta: {
         title: '产品中心'
       },
-      children: [
+      children : [
         {
-          path: '/mProduct/mInterview/:id',
-          component: mInterview, 
-          props: true
-        },
+          path: 'mProductInfo',
+          name: '产品中心',
+          component: mProductInfo,
+          props: function (route) {
+            return { 
+              id: route.query.id ,
+              type : route.query.type
+            };
+          },
+          meta: {
+            title: '产品中心'
+          }
+        }
       ]
     },
     {
@@ -90,9 +103,41 @@ export default new Router({
       path: '/mNewsaction',
       name: '最新动向',
       component: mNewsaction,
+      redirect: '/mNewsaction/mNewsActionInfo',
       meta: {
         title: '最新动向'
       },
+      children : [
+        {
+          path: 'mNewsActionInfo',
+          name: '最新动向',
+          component: mNewsActionInfo,
+          props: function (route) {
+            return { 
+              id: route.query.id ,
+              type : route.query.type
+            };
+          },
+          meta: {
+            title: '最新动向'
+          }
+        }, 
+      ]
+    },
+    {
+        path: '/mProductDetails2',
+        name: '最新动向详情',
+        components: {
+            xiaobai : mProductDetails
+        },
+          props: function (route) {
+            return { 
+              id: route.query.id,
+            };
+          },
+          meta: {
+            title: '最新动向详情'
+          }
     },
     {
       path: '/mContact',
@@ -113,7 +158,7 @@ export default new Router({
       children : [
         {
           path: 'mInterview',
-          name: '产品想我',
+          name: '加入我们',
           component: mInterview,
           props: function (route) {
             return { 
@@ -121,21 +166,11 @@ export default new Router({
             };
           },
           meta: {
-            title: '产品想我'
+            title: '加入我们'
           }
         }
       ]
     },
 
-
-
-    // { 
-    //   path: '/', 
-    //   redirect : '首页',
-    //   component: mHome,
-    //   meta:{
-    //     title: '首页'
-    //   },
-    // },
   ]
 })

@@ -36,6 +36,8 @@
 </template>
 
 <script>
+import axios from "axios";
+
 export default {
   props:['id'],
   data () {
@@ -44,7 +46,48 @@ export default {
     }
   },
   methods: {
-    
+    submitUpload() {
+      this.$refs.upload.submit();
+    },
+    testUpload(params) {
+      const file = params.file;
+      const fileType = file.type;
+
+      console.log("type==" + fileType);
+      let fd = new FormData();
+      fd.append("file", file);
+      axios.post(this.url, fd, {
+          headers: { "content-type": "multipart/form-data" }
+        })
+        .then(res => {
+          console.log(res);
+          if (res.status == "200") {
+            console.log("成功");
+            this.$refs.upload.clearFiles();
+          }
+        })
+        .catch(err => {
+          console.log(err);
+        });
+    },
+    handerBeforUpload(file) {
+      console.log("handerBeforUpload===" + file);
+    },
+    handleRemove(file, fileList) {
+      console.log("remove===" + file, fileList);
+    },
+    handlePreview(file) {
+      console.log("preview===" + file);
+    },
+    handleSuccess(response, file, fileList) {
+      console.log("success==" + response);
+    },
+    handleError(err, file, fileList) {
+      console.log("error==" + err);
+    },
+    handerChange(file, fileList) {
+      console.log("change==" + file);
+    },
   },
   mounted(){
    
@@ -64,7 +107,7 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .interview-parent {
-   color: red;
+   color: white;
    display: flex
 }
 .interview-content{
@@ -112,10 +155,11 @@ export default {
 
 .job-apply{
     margin-top: 50px;
-    border: 1px solid #498EFC;
-    border-radius: 15px;
-    padding-top: 20px;
-    padding-bottom: 20px;
+    width: 200px;
+    border: 1px solid #fdbc21;
+    border-radius: 50px;
+    padding-top: 10px;
+    padding-bottom: 10px;
     text-align: center;
 }
 

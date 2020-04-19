@@ -7,12 +7,12 @@ import './assets/css/reset.scss'
 
 import axios from 'axios'
 Vue.prototype.axios = axios;
-if(process.env.NODE_ENV == 'development'){
+if (process.env.NODE_ENV == 'development') {
   //配置本地服务器代理 config/index.js/14行
-  axios.defaults.baseURL='/';
-}else{
+  axios.defaults.baseURL = '/';
+} else {
   //正式服务器地址
-  axios.defaults.baseURL='http://47.101.52.36:8080'; 
+  axios.defaults.baseURL = 'http://47.101.52.36:8080';
 }
 
 router.beforeEach((to, from, next) => {
@@ -106,10 +106,8 @@ Vue.use(Submenu);
 Vue.use(MenuItem);
 Vue.use(MenuItemGroup);
 Vue.use(Upload);
-Vue.use(Button);
-
-
-// Vue.use(Pagination);
+// Vue.use(Button);
+//Vue.use(Pagination);
 // Vue.use(Dialog);
 // Vue.use(Autocomplete);
 // Vue.use(Dropdown);
@@ -151,7 +149,7 @@ Vue.use(Button);
 // Vue.use(Progress);
 // Vue.use(Spinner);
 // Vue.use(Badge);
-Vue.use(Card);
+// Vue.use(Card);
 // Vue.use(Rate);
 //  Vue.use(Steps);
 //  Vue.use(Step);
@@ -162,7 +160,7 @@ Vue.use(CarouselItem);
 // Vue.use(Cascader);
 // Vue.use(ColorPicker);
 // Vue.use(Transfer);
- Vue.use(Container);
+Vue.use(Container);
 // Vue.use(Header);
 Vue.use(Aside);
 Vue.use(Main);
@@ -171,13 +169,12 @@ Vue.use(Timeline);
 Vue.use(TimelineItem);
 // Vue.use(Link);
 // Vue.use(Divider);
-// Vue.use(Image);
+Vue.use(Image);
 // Vue.use(Calendar);
-// Vue.use(Backtop);
+Vue.use(Backtop);
 // Vue.use(PageHeader);
 // Vue.use(CascaderPanel);
 
-Vue.config.productionTip = false
 
 /* eslint-disable no-new */
 new Vue({

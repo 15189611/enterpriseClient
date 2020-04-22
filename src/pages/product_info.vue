@@ -6,7 +6,8 @@
         <template v-for="(item,index) in itemArray">
           <div class="product-item-parent">
             <div class="item-img-parent">
-              <el-image class="item-img"  fit="cover" src="../../static/images/tianxian.jpg" />
+              <el-image class="item-img"  fit="cover" :src="require('../../static/images/tianxian.jpg')" />
+              <!-- <img class="item-img"  src="../../static/images/tianxian.jpg" alt /> -->
             </div>
 
             <div class="item-des-parent">
@@ -32,7 +33,7 @@
 
            <div class="product-detal-parent">
             <div class="product-detal-img-parent">
-              <el-image class="detal-img" fit="cover" src="../../static/images/product-detal.jpg" />
+              <el-image class="detal-img" fit="cover" :src="require('../../static/images/product-detal.jpg')" />
             </div>
               <div class="detal-title">地面平板天线</div>
               <div class="detal-info">

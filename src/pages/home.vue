@@ -86,18 +86,18 @@ export default {
       msg: "Welcome to Your Vue.js App",
       currentData: "",
       bannerImgs : [{
-         url:  "../../static/images/new_1.jpg",
+         url:  require("../../static/images/new_1.jpg"),
       },{
-        url:  "../../static/images/new_1.jpg",
+        url:  require("../../static/images/new_1.jpg"),
       },{
-        url:  "../../static/images/new_1.jpg",
+        url:  require("../../static/images/new_1.jpg"),
       }],
       imgs: [{
-        url:  "../../static/images/new_2.jpg",
+         url:  require("../../static/images/new_2.jpg"),
       },{
-        url:  "../../static/images/new_3.jpg",
+        url:  require("../../static/images/new_3.jpg"),
       },{
-        url:  "../../static/images/new_4.jpg",
+        url:  require("../../static/images/new_4.jpg"),
       }]
     };
   },

@@ -1,9 +1,8 @@
 <template>
   <div id="app">
-    <!-- :class="[isHome ? 'wrapper' : 'wrapper2' ]" -->
     <div class="wrapper">
       <Header  :class="[isFixed ? 'isFixed' : 'header']" />
-      <router-view class="middle" />
+      <router-view class="middle"  />
       <router-view name="xiaobai" class="middle" />
       <Footer class="footer" />
       <el-backtop :right="50" :bottom="50">
@@ -26,7 +25,6 @@ export default {
       screenWidth: document.body.clientWidth, // 屏幕尺寸
       isHome: false,
       isFixed: false,
-      offsetTop: 0
     };
   },
   components: {
@@ -40,14 +38,6 @@ export default {
       } else {
         this.isHome = false;
       }
-    },
-    initHeight() {
-      var scrollTop =
-        window.pageYOffset ||
-        document.documentElement.scrollTop ||
-        document.body.scrollTop;
-      // this.isFixed = (scrollTop > this.offsetTop && scrollTop > 50) ? true : false;
-      this.isFixed = false;
     }
   },
   created() {
@@ -63,13 +53,9 @@ export default {
       })();
     };
 
-    window.addEventListener("scroll", this.initHeight);
-    this.$nextTick(() => {
-      this.offsetTop = document.querySelector("#boxFixed").offsetTop;
-    });
   },
   destroyed() {
-    window.removeEventListener("scroll", this.handleScroll);
+   
   },
   watch: {
     $route: {
@@ -99,11 +85,12 @@ export default {
 }
 
 .isFixed {
-  /* position : sticky; */
   position: fixed;
   top: 0;
   left: 0;
+  bottom: auto;
   z-index: 2;
+  flex: 0 0 auto;
 }
 
 .header {

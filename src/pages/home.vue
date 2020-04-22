@@ -7,7 +7,7 @@
         <div class="des-two">致力于推动前沿太空科技的一家公司</div>
         <div class="des-three">太空，人类的最终前沿</div>
       </div>
-      <img class="des-logo"  src="../../static/images/fixed_logo.png"/>
+      <img class="des-logo" src="../../static/images/fixed_logo.png"/>
     </div>
 
     <!--中间部分-->
@@ -93,7 +93,7 @@ export default {
         url:  require("../../static/images/new_1.jpg"),
       }],
       imgs: [{
-         url:  require("../../static/images/new_2.jpg"),
+        url:  require("../../static/images/new_2.jpg"),
       },{
         url:  require("../../static/images/new_3.jpg"),
       },{
@@ -148,6 +148,7 @@ export default {
 }
 
 .des-logo{
+  display: none;
   width: 55px;
   height: 40px;
   position: fixed;

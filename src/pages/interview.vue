@@ -29,7 +29,19 @@
            2.DDR/Serdes验证经验.
       </div>
 
-      <div class="job-apply">申请职位</div>
+      <el-upload
+        class="upload-demo"
+        ref="upload"
+        :action="url"
+        :before-upload="beforeUpload"
+        :on-success="handleSuccess"
+        :on-error="handleError"
+        :file-list="fileList"
+        :show-file-list = "false"
+        :auto-upload="true">
+        <div class="job-apply" slot="trigger">申请职位</div>
+      </el-upload>
+
 
     </div>
   </div>
@@ -42,13 +54,12 @@ export default {
   props:['id'],
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App',
+      fileList : [],
+      url : "/enterprise/upload/test.do",
     }
   },
   methods: {
-    submitUpload() {
-      this.$refs.upload.submit();
-    },
+    //添加http-request	这个字段，自己写方法上传
     testUpload(params) {
       const file = params.file;
       const fileType = file.type;
@@ -70,23 +81,29 @@ export default {
           console.log(err);
         });
     },
-    handerBeforUpload(file) {
-      console.log("handerBeforUpload===" + file);
-    },
-    handleRemove(file, fileList) {
-      console.log("remove===" + file, fileList);
-    },
-    handlePreview(file) {
-      console.log("preview===" + file);
+    beforeUpload(file){
+        console.log("beforeUpload===",file);
+        const isJPG = file.type == 'image/jpeg';
+        const isLt2M = file.size / 1024 / 1024 > 1;
+
+        if(isJPG){
+          this.$message.error('不能上传图片格式!');
+          return !isJPG
+        }
+
+        if (isLt2M) {
+          this.$message.error('上传文件不能大于 1MB!');
+          return !isLt2M
+        }
+       
     },
     handleSuccess(response, file, fileList) {
+       this.$message.success('上传成功');
       console.log("success==" + response);
     },
     handleError(err, file, fileList) {
+      this.$message.error(err);
       console.log("error==" + err);
-    },
-    handerChange(file, fileList) {
-      console.log("change==" + file);
     },
   },
   mounted(){
@@ -105,7 +122,7 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
+<style lang="scss" scoped>
 .interview-parent {
    color: white;
    display: flex
@@ -153,6 +170,10 @@ export default {
     font-size: 14px;
 }
 
+.upload-demo /deep/ .el-upload:focus{
+  color: white;
+  border-color: white;
+}
 .job-apply{
     margin-top: 50px;
     width: 200px;

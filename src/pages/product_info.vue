@@ -53,7 +53,7 @@
                 补充描述参数补充描述参数补充描述参数补充描述参数
                 补充描述参数补充描述参数补充描述参数补充描述参数
               </div>
-              <div class="detal-download" @click="downLoad">下载参数文件</div>
+              <div class="detal-download" @click="downLoad(typeUrl)">下载参数文件</div>
           </div>
 
       </div>
@@ -63,12 +63,17 @@
 </template>
 
 <script>
+import axios from "axios";
+
 export default {
   props: ["id", "type"],
   data() {
     return {
       msg: "Welcome to Your Vue.js App",
-      itemArray: ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"]
+      itemArray: ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"],
+      url : "/enterprise/attached/test.pdf",
+      imgurl : "/enterprise/attached/w69rLnAqY3.jpg",
+      typeUrl : "/enterprise/attached/个人总结.rtf"
     };
   },
   methods: {
@@ -83,8 +88,62 @@ export default {
         })
         .catch(err => {});
     },
-    downLoad(){
+    downLoad(url){
+      let fullName = url.split("/").pop().split("?")[0]  //test.pdf
+      let fileName  = fullName.split(".")[0]
+      let fileType = String(url.substring(url.indexOf(".")).trim())  //.pdf  文件类型
 
+      axios
+        .get(url, {
+          responseType: "blob"
+        })
+        .then(res => {
+          console.log(res.data);
+          if (!!window.ActiveXObject || "ActiveXObject" in window) {
+            var currentFileName = fileName + "_" + new Date().toLocaleDateString() + fileType;
+            var type = "text/plain; charset=UTF-8";
+            var obj = res.data;
+            var blob =
+              typeof File === "function"
+                ? new File([obj], currentFileName, { type: type })
+                : new Blob([obj], { type: type });
+
+            if (typeof window.navigator.msSaveBlob !== "undefined") {
+              window.navigator.msSaveBlob(blob, currentFileName);
+            } else {
+              var URL = window.URL || window.webkitURL;
+              var downloadUrl = URL.createObjectURL(blob);
+              if (currentFileName) {
+                var a = document.createElement("a");
+                if (typeof a.download === "undefined") {
+                  window.location = downloadUrl;
+                } else {
+                  a.href = downloadUrl;
+                  a.download = currentFileName;
+                  document.body.appendChild(a);
+                  a.click();
+                }
+              } else {
+                window.location = downloadUrl;
+              }
+              window.URL.revokeObjectURL(a.href)
+            }
+          } else {
+            let url = window.URL.createObjectURL(res.data);
+            let link = document.createElement("a");
+            link.style.display = "none";
+            link.href = url;
+            var currentFileName = fileName + "_" + new Date().toLocaleDateString() + fileType;
+            link.setAttribute("download", currentFileName);
+            document.body.appendChild(link);
+            link.click();
+            window.URL.revokeObjectURL(link.href)
+          }
+          self.fullscreenLoading = false;
+        })
+        .catch(err => {
+          console.log(err);
+        });
     }
   },
   mounted() {

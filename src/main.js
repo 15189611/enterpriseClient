@@ -97,7 +97,6 @@ import {
   CascaderPanel,
   Loading,
   MessageBox,
-  Message,
   Notification
 } from 'element-ui';
 
@@ -106,6 +105,9 @@ Vue.use(Submenu);
 Vue.use(MenuItem);
 Vue.use(MenuItemGroup);
 Vue.use(Upload);
+
+import {Message} from 'element-ui';
+Vue.prototype.$message = Message
 // Vue.use(Button);
 //Vue.use(Pagination);
 // Vue.use(Dialog);
